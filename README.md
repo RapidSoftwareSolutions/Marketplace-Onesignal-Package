@@ -42,7 +42,28 @@ Method description
 	"callback":"success",
 	"contextWrites":{
 		"#":{
-			"to":"..."
+			"to": {
+				"players":
+				[
+				    {
+				      "identifier":"ce777617da7f548fe7a9ab6febb56cf39fba6d382000c0395666288d961ee566",
+				      "session_count":1,
+				      "language":"en",
+				      "timezone":-28800,
+				      "game_version":"1.0",
+				      "device_os":"7.0.4",
+				      "device_type":0,
+				      "device_model":"iPhone",
+				      "ad_id":null,
+				      "tags":{"a":"1","foo":"bar"},
+				      "last_active":1395096859,
+				      "amount_spent":0.0,
+				      "created_at":1395096859,
+				      "invalid_identifier":false,
+				      "badge_count": 0
+				    }
+				]
+			}
 		}
 	}
 }
@@ -71,7 +92,23 @@ Method description
 	"callback":"success",
 	"contextWrites":{
 		"#":{
-			"to":"..."
+			"to":{
+  				"identifier":"ce777617da7f548fe7a9ab6febb56cf39fba6d382000c0395666288d961ee566",
+			  	"session_count":1,
+			  	"language":"en",
+			  	"timezone":-28800,
+			  	"game_version":"1.0",
+			  	"device_os":"7.0.4",
+			  	"device_type":0,
+			  	"device_model":"iPhone",
+			  	"ad_id":null,
+			 	"tags":{"a":"1","foo":"bar"},
+			  	"last_active":1395096859,
+			 	"amount_spent":0.0,
+			  	"created_at":1395096859,
+			  	"invalid_identifier":false,
+			  	"badge_count": 0
+			}
 		}
 	}
 }
@@ -109,25 +146,12 @@ Method description
 ```json
 {	"appId": "...",
 	"deviceType": 0,
-	"identifier": "...",
-	"language": "...",
-	"timezone": 0,
-	"gameVersion": "...",
-	"deviceModel": "...",
-	"deviceOs": "...",
-	"adId": "...",
-	"sdk": "...",
-	"sessionCount": 0,
-	"tags": "...",
-	"amountSpent": "...",
-	"playtime": 0,
-	"createdAt": 0,
-	"badgeCount": 0,
-	"lastActive": 0,
-	"testType": 0,
-	"notificationTypes": "...",
-	"lat": "...",
-	"long": "..."
+	"identifier": "ce777617da7f548fe7a9ab6febb56cf39fba6d382000c0395666288d961ee566",
+	"language": "en",
+	"gameVersion": 1.0,
+	"deviceModel": "iPhone 5,2",
+	"deviceOs": "7.0.4",
+	"tags": "{\"a\":\"1\", \"foo\":\"bar\"}",
 }
 ```
 #### Response example
@@ -136,7 +160,7 @@ Method description
 	"callback":"success",
 	"contextWrites":{
 		"#":{
-			"to":"..."
+			"to":{"success": true, "id": "ffffb794-ba37-11e3-8077-031d62f86ebf" }
 		}
 	}
 }
@@ -174,25 +198,11 @@ Method description
 ```json
 {	"appId": "...",
 	"deviceId": "...",
-	"identifier": "...",
-	"language": "...",
-	"timezone": 0,
-	"gameVersion": "...",
-	"deviceModel": "...",
-	"deviceOs": "...",
-	"adId": "...",
-	"sdk": "...",
-	"sessionCount": 0,
-	"tags": "...",
-	"amountSpent": "...",
-	"playtime": 0,
-	"createdAt": 0,
-	"badgeCount": 0,
-	"lastActive": 0,
-	"testType": 0,
-	"notificationTypes": "...",
-	"lat": "...",
-	"long": "..."
+	"language": "ru",
+	"timezone": -28800,
+	"gameVersion": 1.0,
+	"deviceModel": "iPhone 5,2",
+	"deviceOs": "7.0.5",
 }
 ```
 #### Response example
@@ -201,53 +211,11 @@ Method description
 	"callback":"success",
 	"contextWrites":{
 		"#":{
-			"to":"..."
+			"to": {"success": true, "id": "ffffb794-ba37-11e3-8077-031d62f86ebf"}
 		}
 	}
 }
 ```
-
-<a name="createDeviceSession"/>
-## OneSignal.createDeviceSession
-Method description
-
-| Field      | Type  | Description
-|------------|-------|----------
-| deviceId   | Number| The device's platform: `0` = iOS; `1` = Android; `2` = Amazon; `3` = WindowsPhone(MPNS); `4` = Chrome Apps / Extensions; `5` = Chrome Web Push; `6` = WindowsPhone(WNS); `7` = Safari; `8` = Firefox; `9` = MacOS
-| identifier | String| Push notification identifier from Google or Apple. For Apple push identifiers, you must strip all non alphanumeric characters. Example: `ce777617da7f548fe7a9ab6febb56`.
-| language   | String| Language code. Typically lower case two letters, except for Chinese where it must be one of zh-Hans or zh-Hant. Example: `en`.
-| timezone   | Number| Number of seconds away from UTC. Example: `-28800`.
-| gameVersion| String| Version of your app. Example: `1.1`.
-| deviceOs   | String| Device operating system version. Example: `7.0.4`.
-| adId       | String| The ad id for the device's platform: Android = `Advertising Id`; iOS = `identifierForVendor`; WP8.0 = `DeviceUniqueId`; WP8.1 = `AdvertisingId`.
-| sdk        | String| Name and version of the plugin that's calling this API method (if any).
-| tags       | String| Custom tags for the player. Only support string key value pairs. Does not support arrays or other nested objects. Example: `{"foo":"bar","this":"that"}`.
-
-#### Request example
-```json
-{	"deviceId": 0,
-	"identifier": "...",
-	"language": "...",
-	"timezone": 0,
-	"gameVersion": "...",
-	"deviceOs": "...",
-	"adId": "...",
-	"sdk": "...",
-	"tags": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"..."
-		}
-	}
-}
-```
-
 <a name="addDevicePurchase"/>
 ## OneSignal.addDevicePurchase
 Method description
@@ -294,8 +262,8 @@ Method description
 #### Request example
 ```json
 {	"deviceId": 0,
-	"state": "...",
-	"activeTime": 0
+	"state": "ping",
+	"activeTime": 60
 }
 ```
 #### Response example
@@ -304,7 +272,7 @@ Method description
 	"callback":"success",
 	"contextWrites":{
 		"#":{
-			"to":"..."
+			"to": {"success": true }
 		}
 	}
 }
@@ -331,7 +299,53 @@ Method description
 	"callback":"success",
 	"contextWrites":{
 		"#":{
-			"to":"..."
+			"to":{
+			 "notifications":[
+			   {
+			    "id":"481a2734-6b7d-11e4-a6ea-4b53294fa671",
+			    "successful":15,
+			    "failed":1,
+			    "converted":3,
+			    "remaining":0,
+			    "queued_at":1415914655,
+			    "send_after":1415914655,
+			    "canceled": false,
+			    "url": "https://yourWebsiteToOpen.com",
+			    "data":null,
+				"headings":{
+			      "en":"English and default langauge heading",
+			      "es":"Spanish language heading"
+			    },     
+			    "contents":{
+			      "en":"English and default content",
+			      "es":"Hola"
+			    }
+			   },
+			   {
+			    "id":"b6b326a8-40aa-13e5-b91b-bf8bc3fa26f7",
+			    "successful":5,
+			    "failed":2,
+			    "converted":0,
+			    "remaining":0,
+			    "queued_at":1415915123,
+			    "send_after":1415915123,
+			    "canceled": false,
+			    "url": nil,
+			    "data":{
+			      "foo":"bar",
+			      "your":"custom metadata"
+			    },
+			    "headings":{
+			      "en":"English and default langauge heading",
+			      "es":"Spanish language heading"
+			    },
+			    "contents":{
+			      "en":"English and default content",
+			      "es":"Hola"
+			    }
+			   }
+			 ]
+			}
 		}
 	}
 }
@@ -360,7 +374,29 @@ Method description
 	"callback":"success",
 	"contextWrites":{
 		"#":{
-			"to":"..."
+			"to": {
+			  "id":"481a2734-6b7d-11e4-a6ea-4b53294fa671",
+			  "successful":15,
+			  "failed":1,
+			  "converted":3,
+			  "remaining":0,
+			  "queued_at":1415914655,
+			  "send_after":1415914655,  
+			  "url": "https://yourWebsiteToOpen.com",
+			  "data":{
+			    "foo":"bar",
+			   	"your":"custom metadata"
+			  },
+			  "canceled": false,
+			  "headings":{
+			      "en":"English and default langauge heading",
+			      "es":"Spanish language heading"
+			  },
+			  "contents":{
+			    "en":"English language content",
+			    "es":"Hola"
+			  }
+			}
 		}
 	}
 }
@@ -380,7 +416,7 @@ Method description
 ```json
 {	"appId": "...",
 	"notificationId": "...",
-	"opened": "..."
+	"opened": true
 }
 ```
 #### Response example
@@ -389,7 +425,7 @@ Method description
 	"callback":"success",
 	"contextWrites":{
 		"#":{
-			"to":"..."
+			"to": {"success": true}
 		}
 	}
 }
@@ -455,53 +491,8 @@ Method description
 ```json
 {	"appKey": "...",
 	"appId": "...",
-	"appIds": "...",
-	"includedSegments": "...",
-	"excludedSegments": "...",
-	"includePlayerIds": "...",
-	"contents": "...",
-	"headings": "...",
-	"templateId": "...",
-	"contentAvailable": "...",
-	"mutableContent": "...",
-	"data": "...",
-	"url": "...",
-	"bigPicture": "...",
-	"admBigPicture": "...",
-	"chromeBigPicture": "...",
-	"buttons": "...",
-	"webButtons": "...",
-	"iosCategory": "...",
-	"androidBackgroundLayout": "...",
-	"smallIcon": "...",
-	"largeIcon": "...",
-	"chromeWebIcon": "...",
-	"admSmallIcon": "...",
-	"admLargeIcon": "...",
-	"chromeIcon": "...",
-	"iosSound": "...",
-	"androidSound": "...",
-	"admSound": "...",
-	"wpSound": "...",
-	"wpWnsSound": "...",
-	"androidLedColor": "...",
-	"androidAccentColor": "...",
-	"androidVisibility": 0,
-	"iosBadgeType": "...",
-	"iosBadgeCount": "...",
-	"sendAfter": "...",
-	"delayedOption": "...",
-	"ttl": "...",
-	"isIos": "...",
-	"isAndroid": "...",
-	"isAnyWeb": "...",
-	"isChromeWeb": "...",
-	"isFirefox": "...",
-	"isSafari": "...",
-	"isWP": "...",
-	"isWP_WNS": "...",
-	"isAdm": "...",
-	"isChrome": "..."
+	"includedSegments": "Active",
+	"contents": "{\"en\": \"English Message\"}",
 }
 ```
 #### Response example
@@ -510,7 +501,10 @@ Method description
 	"callback":"success",
 	"contextWrites":{
 		"#":{
-			"to":"..."
+			"to":{
+			  "id": "458dcec4-cf53-11e3-add2-000c2940e62c",
+			  "recipients": 5
+			}
 		}
 	}
 }
@@ -539,7 +533,7 @@ Method description
 	"callback":"success",
 	"contextWrites":{
 		"#":{
-			"to":"..."
+			"to": {'success': "true"}
 		}
 	}
 }
