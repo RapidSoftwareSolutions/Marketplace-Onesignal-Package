@@ -535,7 +535,7 @@ Method description
 	"callback":"success",
 	"contextWrites":{
 		"#":{
-			"to": {'success': "true"}
+			"to": {"success": "true"}
 		}
 	}
 }
