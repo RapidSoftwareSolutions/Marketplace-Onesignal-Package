@@ -4,8 +4,10 @@ Push Notification delivery and automation.
 * Credentials: userKey, appKey, appId
 
 ## How to get credentials: 
-0. Item one 
-1. Item two
+0. Create OnseSignal account. 
+1. Create new app and choose it.
+2. Goto `App Settings > Keys & IDs`.
+3. Copy and save your `OneSignal App ID` & `REST API Key`.
 
 ## TOC: 
 * [getDevices](#getDevices)
