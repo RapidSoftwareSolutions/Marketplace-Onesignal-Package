@@ -7,6 +7,7 @@ module.exports = (req, res) => {
 	req.body.args = _.clearArgs(req.body.args, false);
 
 	let { 
+
 		deviceId,
 		identifier, 
 		language, 
@@ -47,7 +48,6 @@ module.exports = (req, res) => {
 		body: JSON.stringify(bodyOptions),
 		headers: {
 			'Content-Type':  `application/json`,
-			'Authorization': `Basic ${appKey}`
 		}
 	}
 
