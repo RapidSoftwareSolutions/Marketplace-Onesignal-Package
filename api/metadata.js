@@ -9,7 +9,7 @@ module.exports.do = function(req, res){
         'accounts': {
             'domain': 'onesignal.com',
             'credentials': [
-                'userKey', 'appKey', 'appId'
+                'appKey', 'appId'
             ]
         },
         'blocks': [{
@@ -22,7 +22,7 @@ module.exports.do = function(req, res){
                 },
                 {
                     name: "appId",
-                    type: "String",
+                    type: "credentials",
                     info: "Your app id for this device.",
                 },
             ],
@@ -46,7 +46,7 @@ module.exports.do = function(req, res){
                 },
                 {
                     name: "appId",
-                    type: "String",
+                    type: "credentials",
                     info: "Your app id for this device.",
                 },
                 {
@@ -70,7 +70,7 @@ module.exports.do = function(req, res){
             "args":[
                 {
                     name: "appId",
-                    type: "String",
+                    type: "credentials",
                     info: "Your app id for this device.",
                 },
                 {
@@ -189,7 +189,7 @@ module.exports.do = function(req, res){
             "args":[
                 {
                     name: "appId",
-                    type: "String",
+                    type: "credentials",
                     info: "Your app id for this device.",
                 },
                 {
@@ -440,7 +440,7 @@ module.exports.do = function(req, res){
                 },
                 {
                     name: "appId",
-                    type: "String",
+                    type: "credentials",
                     info: "Your app id for this device.",
                 },
             ],
@@ -464,7 +464,7 @@ module.exports.do = function(req, res){
                 },
                 {
                     name: "appId",
-                    type: "String",
+                    type: "credentials",
                     info: "Your app id for this device.",
                 },
                 {
@@ -488,7 +488,7 @@ module.exports.do = function(req, res){
             "args":[
                 {
                     name: "appId",
-                    type: "String",
+                    type: "credentials",
                     info: "OneSignal app id.",
                 },
                 {
@@ -522,7 +522,7 @@ module.exports.do = function(req, res){
                 },
                 {
                     name: "appId",
-                    type: "String",
+                    type: "credentials",
                     info: "Your OneSignal application ID, which can be found in Keys & IDs. It is a UUID and looks similar to `8250eaf6-1a58-489e-b136-7c74a864b434`.",
                 },
                 {
@@ -781,7 +781,7 @@ module.exports.do = function(req, res){
                 },
                 {
                     name: "appId",
-                    type: "String",
+                    type: "credentials",
                     info: "Your app id for this device.",
                 },
                 {
