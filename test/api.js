@@ -104,7 +104,9 @@ describe('OneSignal package', () => {
         });
     });
 
-    it('/getNotification', () => {
+    it('/getNotification', function() {
+        this.timeout(10000);
+        
         return request(app)
         .post(`/api/${global.PACKAGE_NAME}/getNotification`)
         .send({args:{appId, appKey, notificationId}})
