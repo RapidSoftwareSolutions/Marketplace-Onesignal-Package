@@ -1,7 +1,7 @@
 # OneSignal Package
 Push Notification delivery and automation.
 * Domain: onesignal.com
-* Credentials: userKey, appKey, appId
+* Credentials: appKey, appId
 
 ## How to get credentials: 
 0. Create OnseSignal account. 
@@ -30,44 +30,44 @@ Method description
 | Field | Type       | Description
 |-------|------------|----------
 | appKey| credentials| REST API keys are used for API calls on a specific app's notifications or devices.
-| appId | String     | Your app id for this device.
+| appId | credentials     | Your app id for this device.
 
 #### Request example
 ```json
-{	"appKey": "...",
-	"appId": "..."
+{   "appKey": "...",
+    "appId": "..."
 }
 ```
 #### Response example
 ```json
 {
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to": {
-				"players":
-				[
-				    {
-				      "identifier":"ce777617da7f548fe7a9ab6febb56cf39fba6d382000c0395666288d961ee566",
-				      "session_count":1,
-				      "language":"en",
-				      "timezone":-28800,
-				      "game_version":"1.0",
-				      "device_os":"7.0.4",
-				      "device_type":0,
-				      "device_model":"iPhone",
-				      "ad_id":null,
-				      "tags":{"a":"1","foo":"bar"},
-				      "last_active":1395096859,
-				      "amount_spent":0.0,
-				      "created_at":1395096859,
-				      "invalid_identifier":false,
-				      "badge_count": 0
-				    }
-				]
-			}
-		}
-	}
+    "callback":"success",
+    "contextWrites":{
+        "#":{
+            "to": {
+                "players":
+                [
+                    {
+                      "identifier":"ce777617da7f548fe7a9ab6febb56cf39fba6d382000c0395666288d961ee566",
+                      "session_count":1,
+                      "language":"en",
+                      "timezone":-28800,
+                      "game_version":"1.0",
+                      "device_os":"7.0.4",
+                      "device_type":0,
+                      "device_model":"iPhone",
+                      "ad_id":null,
+                      "tags":{"a":"1","foo":"bar"},
+                      "last_active":1395096859,
+                      "amount_spent":0.0,
+                      "created_at":1395096859,
+                      "invalid_identifier":false,
+                      "badge_count": 0
+                    }
+                ]
+            }
+        }
+    }
 }
 ```
 
@@ -78,41 +78,41 @@ Method description
 | Field   | Type       | Description
 |---------|------------|----------
 | appKey  | credentials| REST API keys are used for API calls on a specific app's notifications or devices.
-| appId   | String     | Your app id for this device.
+| appId | credentials     | Your app id for this device.
 | deviceId| String     | Player's OneSignal ID.
 
 #### Request example
 ```json
-{	"appKey": "...",
-	"appId": "...",
-	"deviceId": "..."
+{   "appKey": "...",
+    "appId": "...",
+    "deviceId": "..."
 }
 ```
 #### Response example
 ```json
 {
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":{
-  				"identifier":"ce777617da7f548fe7a9ab6febb56cf39fba6d382000c0395666288d961ee566",
-			  	"session_count":1,
-			  	"language":"en",
-			  	"timezone":-28800,
-			  	"game_version":"1.0",
-			  	"device_os":"7.0.4",
-			  	"device_type":0,
-			  	"device_model":"iPhone",
-			  	"ad_id":null,
-			 	"tags":{"a":"1","foo":"bar"},
-			  	"last_active":1395096859,
-			 	"amount_spent":0.0,
-			  	"created_at":1395096859,
-			  	"invalid_identifier":false,
-			  	"badge_count": 0
-			}
-		}
-	}
+    "callback":"success",
+    "contextWrites":{
+        "#":{
+            "to":{
+                "identifier":"ce777617da7f548fe7a9ab6febb56cf39fba6d382000c0395666288d961ee566",
+                "session_count":1,
+                "language":"en",
+                "timezone":-28800,
+                "game_version":"1.0",
+                "device_os":"7.0.4",
+                "device_type":0,
+                "device_model":"iPhone",
+                "ad_id":null,
+                "tags":{"a":"1","foo":"bar"},
+                "last_active":1395096859,
+                "amount_spent":0.0,
+                "created_at":1395096859,
+                "invalid_identifier":false,
+                "badge_count": 0
+            }
+        }
+    }
 }
 ```
 
@@ -122,7 +122,7 @@ Method description
 
 | Field            | Type  | Description
 |------------------|-------|----------
-| appId            | String| Your app id for this device.
+| appId            | credentials| Your app id for this device.
 | deviceType       | Number| The device's platform: `0` = iOS; `1` = Android; `2` = Amazon; `3` = WindowsPhone(MPNS); `4` = Chrome Apps / Extensions; `5` = Chrome Web Push; `6` = WindowsPhone(WNS); `7` = Safari; `8` = Firefox; `9` = MacOS
 | identifier       | String| Push notification identifier from Google or Apple. For Apple push identifiers, you must strip all non alphanumeric characters. Example: `ce777617da7f548fe7a9ab6febb56`.
 | language         | String| Language code. Typically lower case two letters, except for Chinese where it must be one of zh-Hans or zh-Hant. Example: `en`.
@@ -146,25 +146,25 @@ Method description
 
 #### Request example
 ```json
-{	"appId": "...",
-	"deviceType": 0,
-	"identifier": "ce777617da7f548fe7a9ab6febb56cf39fba6d382000c0395666288d961ee566",
-	"language": "en",
-	"gameVersion": 1.0,
-	"deviceModel": "iPhone 5,2",
-	"deviceOs": "7.0.4",
-	"tags": "{\"a\":\"1\", \"foo\":\"bar\"}",
+{   "appId": "...",
+    "deviceType": 0,
+    "identifier": "ce777617da7f548fe7a9ab6febb56cf39fba6d382000c0395666288d961ee566",
+    "language": "en",
+    "gameVersion": 1.0,
+    "deviceModel": "iPhone 5,2",
+    "deviceOs": "7.0.4",
+    "tags": "{\"a\":\"1\", \"foo\":\"bar\"}",
 }
 ```
 #### Response example
 ```json
 {
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":{"success": true, "id": "ffffb794-ba37-11e3-8077-031d62f86ebf" }
-		}
-	}
+    "callback":"success",
+    "contextWrites":{
+        "#":{
+            "to":{"success": true, "id": "ffffb794-ba37-11e3-8077-031d62f86ebf" }
+        }
+    }
 }
 ```
 
@@ -174,7 +174,7 @@ Method description
 
 | Field            | Type  | Description
 |------------------|-------|----------
-| appId            | String| Your app id for this device.
+| appId            | credentials| Your app id for this device.
 | deviceId         | String| The device's OneSignal ID.
 | identifier       | String| Push notification identifier from Google or Apple. For Apple push identifiers, you must strip all non alphanumeric characters. Example: `ce777617da7f548fe7a9ab6febb56`.
 | language         | String| Language code. Typically lower case two letters, except for Chinese where it must be one of zh-Hans or zh-Hant. Example: `en`.
@@ -198,24 +198,24 @@ Method description
 
 #### Request example
 ```json
-{	"appId": "...",
-	"deviceId": "...",
-	"language": "ru",
-	"timezone": -28800,
-	"gameVersion": 1.0,
-	"deviceModel": "iPhone 5,2",
-	"deviceOs": "7.0.5",
+{   "appId": "...",
+    "deviceId": "...",
+    "language": "ru",
+    "timezone": -28800,
+    "gameVersion": 1.0,
+    "deviceModel": "iPhone 5,2",
+    "deviceOs": "7.0.5",
 }
 ```
 #### Response example
 ```json
 {
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to": {"success": true, "id": "ffffb794-ba37-11e3-8077-031d62f86ebf"}
-		}
-	}
+    "callback":"success",
+    "contextWrites":{
+        "#":{
+            "to": {"success": true, "id": "ffffb794-ba37-11e3-8077-031d62f86ebf"}
+        }
+    }
 }
 ```
 <a name="addDevicePurchase"/>
@@ -232,22 +232,22 @@ Method description
 
 #### Request example
 ```json
-{	"deviceId": 0,
-	"purchaseSku": "...",
-	"purchaseAmount": "...",
-	"purchaseIso": 0,
-	"existing": "..."
+{   "deviceId": 0,
+    "purchaseSku": "...",
+    "purchaseAmount": "...",
+    "purchaseIso": 0,
+    "existing": "..."
 }
 ```
 #### Response example
 ```json
 {
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"..."
-		}
-	}
+    "callback":"success",
+    "contextWrites":{
+        "#":{
+            "to":"..."
+        }
+    }
 }
 ```
 
@@ -263,20 +263,20 @@ Method description
 
 #### Request example
 ```json
-{	"deviceId": 0,
-	"state": "ping",
-	"activeTime": 60
+{   "deviceId": 0,
+    "state": "ping",
+    "activeTime": 60
 }
 ```
 #### Response example
 ```json
 {
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to": {"success": true }
-		}
-	}
+    "callback":"success",
+    "contextWrites":{
+        "#":{
+            "to": {"success": true }
+        }
+    }
 }
 ```
 
@@ -287,69 +287,69 @@ Method description
 | Field | Type       | Description
 |-------|------------|----------
 | appKey| credentials| REST API keys are used for API calls on a specific app's notifications or devices.
-| appId | String     | Your app id for this device.
+| appId | credentials     | Your app id for this device.
 
 #### Request example
 ```json
-{	"appKey": "...",
-	"appId": "..."
+{   "appKey": "...",
+    "appId": "..."
 }
 ```
 #### Response example
 ```json
 {
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":{
-			 "notifications":[
-			   {
-			    "id":"481a2734-6b7d-11e4-a6ea-4b53294fa671",
-			    "successful":15,
-			    "failed":1,
-			    "converted":3,
-			    "remaining":0,
-			    "queued_at":1415914655,
-			    "send_after":1415914655,
-			    "canceled": false,
-			    "url": "https://yourWebsiteToOpen.com",
-			    "data":null,
-				"headings":{
-			      "en":"English and default langauge heading",
-			      "es":"Spanish language heading"
-			    },     
-			    "contents":{
-			      "en":"English and default content",
-			      "es":"Hola"
-			    }
-			   },
-			   {
-			    "id":"b6b326a8-40aa-13e5-b91b-bf8bc3fa26f7",
-			    "successful":5,
-			    "failed":2,
-			    "converted":0,
-			    "remaining":0,
-			    "queued_at":1415915123,
-			    "send_after":1415915123,
-			    "canceled": false,
-			    "url": nil,
-			    "data":{
-			      "foo":"bar",
-			      "your":"custom metadata"
-			    },
-			    "headings":{
-			      "en":"English and default langauge heading",
-			      "es":"Spanish language heading"
-			    },
-			    "contents":{
-			      "en":"English and default content",
-			      "es":"Hola"
-			    }
-			   }
-			 ]
-			}
-		}
-	}
+    "callback":"success",
+    "contextWrites":{
+        "#":{
+            "to":{
+             "notifications":[
+               {
+                "id":"481a2734-6b7d-11e4-a6ea-4b53294fa671",
+                "successful":15,
+                "failed":1,
+                "converted":3,
+                "remaining":0,
+                "queued_at":1415914655,
+                "send_after":1415914655,
+                "canceled": false,
+                "url": "https://yourWebsiteToOpen.com",
+                "data":null,
+                "headings":{
+                  "en":"English and default langauge heading",
+                  "es":"Spanish language heading"
+                },     
+                "contents":{
+                  "en":"English and default content",
+                  "es":"Hola"
+                }
+               },
+               {
+                "id":"b6b326a8-40aa-13e5-b91b-bf8bc3fa26f7",
+                "successful":5,
+                "failed":2,
+                "converted":0,
+                "remaining":0,
+                "queued_at":1415915123,
+                "send_after":1415915123,
+                "canceled": false,
+                "url": nil,
+                "data":{
+                  "foo":"bar",
+                  "your":"custom metadata"
+                },
+                "headings":{
+                  "en":"English and default langauge heading",
+                  "es":"Spanish language heading"
+                },
+                "contents":{
+                  "en":"English and default content",
+                  "es":"Hola"
+                }
+               }
+             ]
+            }
+        }
+    }
 }
 ```
 
@@ -360,47 +360,47 @@ Method description
 | Field         | Type       | Description
 |---------------|------------|----------
 | appKey        | credentials| REST API keys are used for API calls on a specific app's notifications or devices.
-| appId         | String     | Your app id for this device.
+| appId         | credentials     | Your app id for this device.
 | notificationId| String     | Notification ID.
 
 #### Request example
 ```json
-{	"appKey": "...",
-	"appId": "...",
-	"notificationId": "..."
+{   "appKey": "...",
+    "appId": "...",
+    "notificationId": "..."
 }
 ```
 #### Response example
 ```json
 {
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to": {
-			  "id":"481a2734-6b7d-11e4-a6ea-4b53294fa671",
-			  "successful":15,
-			  "failed":1,
-			  "converted":3,
-			  "remaining":0,
-			  "queued_at":1415914655,
-			  "send_after":1415914655,  
-			  "url": "https://yourWebsiteToOpen.com",
-			  "data":{
-			    "foo":"bar",
-			   	"your":"custom metadata"
-			  },
-			  "canceled": false,
-			  "headings":{
-			      "en":"English and default langauge heading",
-			      "es":"Spanish language heading"
-			  },
-			  "contents":{
-			    "en":"English language content",
-			    "es":"Hola"
-			  }
-			}
-		}
-	}
+    "callback":"success",
+    "contextWrites":{
+        "#":{
+            "to": {
+              "id":"481a2734-6b7d-11e4-a6ea-4b53294fa671",
+              "successful":15,
+              "failed":1,
+              "converted":3,
+              "remaining":0,
+              "queued_at":1415914655,
+              "send_after":1415914655,  
+              "url": "https://yourWebsiteToOpen.com",
+              "data":{
+                "foo":"bar",
+                "your":"custom metadata"
+              },
+              "canceled": false,
+              "headings":{
+                  "en":"English and default langauge heading",
+                  "es":"Spanish language heading"
+              },
+              "contents":{
+                "en":"English language content",
+                "es":"Hola"
+              }
+            }
+        }
+    }
 }
 ```
 
@@ -410,26 +410,26 @@ Method description
 
 | Field         | Type   | Description
 |---------------|--------|----------
-| appId         | String | OneSignal app id.
+| appId         | credentials | OneSignal app id.
 | notificationId| String | Notification ID.
 | opened        | Boolean| Set to `true`.
 
 #### Request example
 ```json
-{	"appId": "...",
-	"notificationId": "...",
-	"opened": true
+{   "appId": "...",
+    "notificationId": "...",
+    "opened": true
 }
 ```
 #### Response example
 ```json
 {
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to": {"success": true}
-		}
-	}
+    "callback":"success",
+    "contextWrites":{
+        "#":{
+            "to": {"success": true}
+        }
+    }
 }
 ```
 
@@ -440,7 +440,7 @@ Method description
 | Field                  | Type       | Description
 |------------------------|------------|----------
 | appKey                 | credentials| REST API keys are used for API calls on a specific app's notifications or devices.
-| appId                  | String     | Your OneSignal application ID, which can be found in Keys & IDs. It is a UUID and looks similar to `8250eaf6-1a58-489e-b136-7c74a864b434`.
+| appId                  | credentials     | Your OneSignal application ID, which can be found in Keys & IDs. It is a UUID and looks similar to `8250eaf6-1a58-489e-b136-7c74a864b434`.
 | appIds                 | Array      | Example: '`2dd608f2-a6a1-11e3-251d-400c2940e62b`, `2dd608f2-a6a1-11e3-251d-500f2950e61c`'.
 | includedSegments       | Array      | The segment names you want to target. Users in these segments will receive a notification. This targeting parameter is only compatible with excluded_segments.
 | excludedSegments       | Array      | Segment that will be excluded when sending. Users in these segments will not receive a notification, even if they were included in included_segments. This targeting parameter is only compatible with included_segments.
@@ -491,24 +491,24 @@ Method description
 
 #### Request example
 ```json
-{	"appKey": "...",
-	"appId": "...",
-	"includedSegments": "Active",
-	"contents": "{\"en\": \"English Message\"}",
+{   "appKey": "...",
+    "appId": "...",
+    "includedSegments": "Active",
+    "contents": "{\"en\": \"English Message\"}",
 }
 ```
 #### Response example
 ```json
 {
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":{
-			  "id": "458dcec4-cf53-11e3-add2-000c2940e62c",
-			  "recipients": 5
-			}
-		}
-	}
+    "callback":"success",
+    "contextWrites":{
+        "#":{
+            "to":{
+              "id": "458dcec4-cf53-11e3-add2-000c2940e62c",
+              "recipients": 5
+            }
+        }
+    }
 }
 ```
 
@@ -519,25 +519,24 @@ Method description
 | Field         | Type       | Description
 |---------------|------------|----------
 | appKey        | credentials| REST API keys are used for API calls on a specific app's notifications or devices.
-| appId         | String     | Your app id for this device.
+| appId         | credentials     | Your app id for this device.
 | notificationId| String     | Notification ID.
 
 #### Request example
 ```json
-{	"appKey": "...",
-	"appId": "...",
-	"notificationId": "..."
+{   "appKey": "...",
+    "appId": "...",
+    "notificationId": "..."
 }
 ```
 #### Response example
 ```json
 {
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to": {"success": "true"}
-		}
-	}
+    "callback":"success",
+    "contextWrites":{
+        "#":{
+            "to": {"success": "true"}
+        }
+    }
 }
 ```
-
