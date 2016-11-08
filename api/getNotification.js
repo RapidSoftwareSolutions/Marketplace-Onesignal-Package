@@ -29,7 +29,12 @@ module.exports = (req, res) => {
             r.contextWrites[to] = JSON.parse(body);
             r.callback = 'success'; 
         } else {
-            r.contextWrites[to] = JSON.parse(err || body);
+            try{
+                // 404 html page
+                r.contextWrites[to] = JSON.parse(err || body)
+            } catch(e) {
+                r.contextWrites[to] = 'Notification not found.'
+            }
             r.callback = 'error';
         }
 

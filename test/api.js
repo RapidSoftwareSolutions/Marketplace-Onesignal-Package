@@ -4,7 +4,6 @@ const request = require('supertest-as-promised');
 
 const appKey = 'NTQxM2UzYjgtZDE0Zi00ODk1LTllMGYtMjM2OGZhMWRmNDQ2',
     appId = '4ad249c4-1dba-4ac9-97a8-15f3efd2845b',
-    notificationId = '76ab6ffa-c437-4103-8e3b-21dd15cb0b70',
     deviceId = '7d14056c-4422-4a28-9082-fd713c418d7f',
     deviceType = 4,
     deviceModel = 'Android',
@@ -18,9 +17,9 @@ const appKey = 'NTQxM2UzYjgtZDE0Zi00ODk1LTllMGYtMjM2OGZhMWRmNDQ2',
     state = 'ping',
     purchaseIso = 'USD',
     includedSegments = 'Active Users',
-    contents = '{"en": "English Message", "es": "Spanish Message"}';
+    contents = {"en": "English Message", "es": "Spanish Message"};
 
-
+let notificationId = '';
 
 describe('OneSignal package', () => {
     it('/getDevices', () => {
@@ -94,6 +93,18 @@ describe('OneSignal package', () => {
         });
     });
 
+    it('/sendNotification', () => {
+        return request(app)
+        .post(`/api/${global.PACKAGE_NAME}/sendNotification`)
+        .send({args:{appId, appKey, includedSegments, contents}})
+        .expect(200)
+        .then((res) => {
+            notificationId = res.body.contextWrites.to.id;
+            assert.equal(res.body.callback, 'success');
+        });
+    });
+
+
     it('/getNotifications', () => {
         return request(app)
         .post(`/api/${global.PACKAGE_NAME}/getNotifications`)
@@ -120,16 +131,6 @@ describe('OneSignal package', () => {
         return request(app)
         .post(`/api/${global.PACKAGE_NAME}/trackNotificationOpen`)
         .send({args:{appId, notificationId, opened}})
-        .expect(200)
-        .then((res) => {
-            assert.equal(res.body.callback, 'success');
-        });
-    });
-
-    it('/sendNotification', () => {
-        return request(app)
-        .post(`/api/${global.PACKAGE_NAME}/sendNotification`)
-        .send({args:{appId, appKey, includedSegments, contents}})
         .expect(200)
         .then((res) => {
             assert.equal(res.body.callback, 'success');
