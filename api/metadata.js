@@ -1,7 +1,5 @@
 module.exports.do = function(req, res){
     /* When sending GET request to api/Twitter, return the metadata of the package */
-    res.status(200).send(module.exports.do = function(req, res){
-    /* When sending GET request to api/Twitter, return the metadata of the package */
     res.status(200).send({
         'package': 'OneSignal',
         "tagline": "Onesignal package",
@@ -804,5 +802,4 @@ module.exports.do = function(req, res){
             ]
         },]
     })
-})
-};
+}
