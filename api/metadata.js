@@ -310,8 +310,8 @@ module.exports.do = function(req, res){
             "args":[
                 {
                     name: "deviceId",
-                    type: "Number",
-                    info: "Required: The device's platform: `0` = iOS; `1` = Android; `2` = Amazon; `3` = WindowsPhone(MPNS); `4` = Chrome Apps / Extensions; `5` = Chrome Web Push; `6` = WindowsPhone(WNS); `7` = Safari; `8` = Firefox; `9` = MacOS",
+                    type: "String",
+                    info: "Required: The device's OneSignal ID.",
                 },
                 {
                     name: "identifier",
@@ -369,8 +369,8 @@ module.exports.do = function(req, res){
             "args":[
                 {
                     name: "deviceId",
-                    type: "Number",
-                    info: "Required: The device's platform: `0` = iOS; `1` = Android; `2` = Amazon; `3` = WindowsPhone(MPNS); `4` = Chrome Apps / Extensions; `5` = Chrome Web Push; `6` = WindowsPhone(WNS); `7` = Safari; `8` = Firefox; `9` = MacOS",
+                    type: "String",
+                    info: "Required: The device's OneSignal ID.",
                 },
                 {
                     name: "purchaseSku",
@@ -404,12 +404,12 @@ module.exports.do = function(req, res){
                 }
             ]
         }, {
-            "name":"addDeviceSession",
+            "name":"updateDeviceSessionLength",
             "args":[
                 {
                     name: "deviceId",
-                    type: "Number",
-                    info: "Required: The device's platform: `0` = iOS; `1` = Android; `2` = Amazon; `3` = WindowsPhone(MPNS); `4` = Chrome Apps / Extensions; `5` = Chrome Web Push; `6` = WindowsPhone(WNS); `7` = Safari; `8` = Firefox; `9` = MacOS",
+                    type: "String",
+                    info: "Required: The device's OneSignal ID.",
                 },
                 {
                     name: "state",
