@@ -533,17 +533,17 @@ module.exports.do = function(req, res){
                 {
                     name: "includedSegments",
                     type: "Array",
-                    info: "Required: The segment names you want to target. Users in these segments will receive a notification. This targeting parameter is only compatible with excluded_segments.",
+                    info: "Required: Comma-separated list of the segment names you want to target. Users in these segments will receive a notification. This targeting parameter is only compatible with excluded_segments. Example: Active Users, Inactive Users",
                 },
                 {
                     name: "excludedSegments",
                     type: "Array",
-                    info: "Optional: Segment that will be excluded when sending. Users in these segments will not receive a notification, even if they were included in included_segments. This targeting parameter is only compatible with included_segments.",
+                    info: "Optional: Comma-separated list of segment that will be excluded when sending. Users in these segments will not receive a notification, even if they were included in included_segments. This targeting parameter is only compatible with included_segments. Example: Active Users, Inactive Users",
                 },
                 {
                     name: "includePlayerIds",
                     type: "Array",
-                    info: "Optional: Specific players to send your notification to. Does not require API Auth Key. combine with other targeting parameters. Not compatible with any other targeting parameters. ",
+                    info: "Optional: Comma-separated list of pecific players to send your notification to. Does not require API Auth Key. combine with other targeting parameters. Not compatible with any other targeting parameters. Example: 1dd608f2-c6a1-11e3-851d-000c2940e62c, 1dd608f2-c6a1-11e3-851d-000c2940e62c",
                 },
                 {
                     name: "contents",
