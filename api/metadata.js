@@ -2,7 +2,7 @@ module.exports.do = function(req, res){
     /* When sending GET request to api/Twitter, return the metadata of the package */
     res.status(200).send({
         'package': 'OneSignal',
-        "tagline": "Onesignal package",
+        "tagline": "OneSignal package",
         "description": "Push Notification delivery and automation.",
         'image': 'https://onesignal.com/images/notification_logo.png',
         'repo': 'https://github.com/RapidSoftwareSolutions/marketplace-onesignal-package',
@@ -306,10 +306,10 @@ module.exports.do = function(req, res){
         }, {
             "name":"createDeviceSession",
             "args":[
-                {
+                 {
                     name: "deviceId",
-                    type: "Number",
-                    info: "The device's platform: `0` = iOS; `1` = Android; `2` = Amazon; `3` = WindowsPhone(MPNS); `4` = Chrome Apps / Extensions; `5` = Chrome Web Push; `6` = WindowsPhone(WNS); `7` = Safari; `8` = Firefox; `9` = MacOS",
+                    type: "String",
+                    info: "Player's OneSignal ID.",
                 },
                 {
                     name: "identifier",
@@ -365,10 +365,10 @@ module.exports.do = function(req, res){
         }, {
             "name":"addDevicePurchase",
             "args":[
-                {
+                 {
                     name: "deviceId",
-                    type: "Number",
-                    info: "The device's platform: `0` = iOS; `1` = Android; `2` = Amazon; `3` = WindowsPhone(MPNS); `4` = Chrome Apps / Extensions; `5` = Chrome Web Push; `6` = WindowsPhone(WNS); `7` = Safari; `8` = Firefox; `9` = MacOS",
+                    type: "String",
+                    info: "Player's OneSignal ID.",
                 },
                 {
                     name: "purchaseSku",
@@ -402,12 +402,12 @@ module.exports.do = function(req, res){
                 }
             ]
         }, {
-            "name":"addDeviceSession",
+            "name":"updateDeviceSessionLength",
             "args":[
                 {
                     name: "deviceId",
-                    type: "Number",
-                    info: "The device's platform: `0` = iOS; `1` = Android; `2` = Amazon; `3` = WindowsPhone(MPNS); `4` = Chrome Apps / Extensions; `5` = Chrome Web Push; `6` = WindowsPhone(WNS); `7` = Safari; `8` = Firefox; `9` = MacOS",
+                    type: "String",
+                    info: "Player's OneSignal ID.",
                 },
                 {
                     name: "state",
