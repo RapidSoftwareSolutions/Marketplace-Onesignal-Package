@@ -83,9 +83,9 @@ describe('OneSignal package', () => {
     });
 
 
-    it('/addDeviceSession', () => {
+    it('/updateDeviceSessionLength', () => {
         return request(app)
-        .post(`/api/${global.PACKAGE_NAME}/addDeviceSession`)
+        .post(`/api/${global.PACKAGE_NAME}/updateDeviceSessionLength`)
         .send({args:{deviceId, state, activeTime}})
         .expect(200)
         .then((res) => {
