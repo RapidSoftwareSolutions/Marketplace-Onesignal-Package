@@ -314,42 +314,42 @@ module.exports.do = function(req, res){
                 {
                     name: "identifier",
                     type: "String",
-                    info: "Push notification identifier from Google or Apple. For Apple push identifiers, you must strip all non alphanumeric characters. Example: `ce777617da7f548fe7a9ab6febb56`.",
+                    info: "Optional: Push notification identifier from Google or Apple. For Apple push identifiers, you must strip all non alphanumeric characters. Example: `ce777617da7f548fe7a9ab6febb56`.",
                 },
                 {
                     name: "language",
                     type: "String",
-                    info: "Language code. Typically lower case two letters, except for Chinese where it must be one of zh-Hans or zh-Hant. Example: `en`.",
+                    info: "Optional: Language code. Typically lower case two letters, except for Chinese where it must be one of zh-Hans or zh-Hant. Example: `en`.",
                 },
                 {
                     name: "timezone",
                     type: "Number",
-                    info: "Number of seconds away from UTC. Example: `-28800`.",
+                    info: "Optional: Number of seconds away from UTC. Example: `-28800`.",
                 },
                 {
                     name: "gameVersion",
                     type: "String",
-                    info: "Version of your app. Example: `1.1`.",
+                    info: "Optional: Version of your app. Example: `1.1`.",
                 },
                 {
                     name: "deviceOs",
                     type: "String",
-                    info: "Device operating system version. Example: `7.0.4`.",
+                    info: "Optional: Device operating system version. Example: `7.0.4`.",
                 },
                 {
                     name: "adId",
                     type: "String",
-                    info: "The ad id for the device's platform: Android = `Advertising Id`; iOS = `identifierForVendor`; WP8.0 = `DeviceUniqueId`; WP8.1 = `AdvertisingId`.",
+                    info: "Optional: The ad id for the device's platform: Android = `Advertising Id`; iOS = `identifierForVendor`; WP8.0 = `DeviceUniqueId`; WP8.1 = `AdvertisingId`.",
                 },
                 {
                     name: "sdk",
                     type: "String",
-                    info: "Name and version of the plugin that's calling this API method (if any).",
+                    info: "Optional: Name and version of the plugin that's calling this API method (if any).",
                 },
                 {
                     name: "tags",
                     type: "String", // Hash
-                    info: 'Custom tags for the player. Only support string key value pairs. Does not support arrays or other nested objects. Example: `{"foo":"bar","this":"that"}`.',
+                    info: 'Optional: Custom tags for the player. Only support string key value pairs. Does not support arrays or other nested objects. Example: `{"foo":"bar","this":"that"}`.',
                 },
             ],
             'callbacks':[
@@ -368,22 +368,22 @@ module.exports.do = function(req, res){
                 {
                     name: "deviceId",
                     type: "Number",
-                    info: "The device's platform: `0` = iOS; `1` = Android; `2` = Amazon; `3` = WindowsPhone(MPNS); `4` = Chrome Apps / Extensions; `5` = Chrome Web Push; `6` = WindowsPhone(WNS); `7` = Safari; `8` = Firefox; `9` = MacOS",
+                    info: "Required: The device's platform: `0` = iOS; `1` = Android; `2` = Amazon; `3` = WindowsPhone(MPNS); `4` = Chrome Apps / Extensions; `5` = Chrome Web Push; `6` = WindowsPhone(WNS); `7` = Safari; `8` = Firefox; `9` = MacOS",
                 },
                 {
                     name: "purchaseSku",
                     type: "String",
-                    info: "The unique identifier of the purchased item.",
+                    info: "Required: The unique identifier of the purchased item.",
                 },
                 {
                     name: "purchaseAmount",
                     type: "String", // Double
-                    info: "The amount, in USD, spent purchasing the item.",
+                    info: "Required: The amount, in USD, spent purchasing the item.",
                 },
                 {
                     name: "purchaseIso",
                     type: "Number",
-                    info: "The 3-letter ISO 4217 currency code. Required for correct storage and conversion of amount.",
+                    info: "Required: The 3-letter ISO 4217 currency code. Required for correct storage and conversion of amount.",
                 },
                 {
                     name: "existing",
