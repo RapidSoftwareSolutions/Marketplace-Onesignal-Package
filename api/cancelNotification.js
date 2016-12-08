@@ -2,8 +2,6 @@ const _       = require('../lib/functions')
 const request = require('request');
 
 module.exports = (req, res) => {
-
-    // rpt bug
     req.body.args = _.clearArgs(req.body.args, false);
 
     let { 

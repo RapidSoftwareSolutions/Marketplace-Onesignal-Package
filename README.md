@@ -9,22 +9,6 @@ Push Notification delivery and automation.
 2. Goto `App Settings > Keys & IDs`.
 3. Copy and save your `OneSignal App ID` & `REST API Key`.
 
-## TOC: 
-* [getDevices](#getDevices)
-* [getDevice](#getDevice)
-* [addDevice](#addDevice)
-* [editDevice](#editDevice)
-* [createDeviceSession](#createDeviceSession)
-* [addDevicePurchase](#addDevicePurchase)
-* [addDeviceSession](#addDeviceSession)
-* [getNotifications](#getNotifications)
-* [getNotification](#getNotification)
-* [trackNotificationOpen](#trackNotificationOpen)
-* [sendNotification](#sendNotification)
-* [cancelNotification](#cancelNotification)
-
- 
-<a name="getDevices"/>
 ## OneSignal.getDevices
 Method description
 
@@ -33,7 +17,6 @@ Method description
 | appKey| credentials| Required: REST API keys are used for API calls on a specific app's notifications or devices.
 | appId | credentials| Required: Your app id for this device.
 
-<a name="getDevice"/>
 ## OneSignal.getDevice
 Method description
 
@@ -43,7 +26,6 @@ Method description
 | appId   | credentials| Required: Your app id for this device.
 | deviceId| String     | Required: Player's OneSignal ID.
 
-<a name="addDevice"/>
 ## OneSignal.addDevice
 Method description
 
@@ -71,7 +53,6 @@ Method description
 | lat              | Double     | Optional: Latitude of the device, used for geotagging to segment on.
 | long             | Double     | Optional: Longitude of the device, used for geotagging to segment on.
 
-<a name="editDevice"/>
 ## OneSignal.editDevice
 Method description
 
@@ -99,7 +80,6 @@ Method description
 | lat              | Double     | Optional: Latitude of the device, used for geotagging to segment on.
 | long             | Double     | Optional: Longitude of the device, used for geotagging to segment on.
 
-<a name="createDeviceSession"/>
 ## OneSignal.createDeviceSession
 Method description
 
@@ -115,7 +95,6 @@ Method description
 | sdk        | String| Optional: Name and version of the plugin that's calling this API method (if any).
 | tags       | JSON  | Optional: Custom tags for the player. Only support string key value pairs. Does not support arrays or other nested objects. Example: `{"foo":"bar","this":"that"}`.
 
-<a name="addDevicePurchase"/>
 ## OneSignal.addDevicePurchase
 Method description
 
@@ -127,7 +106,6 @@ Method description
 | purchaseIso   | Number| Required: The 3-letter ISO 4217 currency code. Required for correct storage and conversion of amount.
 | existing      | String| Pass true on the first run of your app if you're tracking existing non-consumable purchases. This prevents tracking the same purchases more than once if the user re-installs your app.
 
-<a name="updateDeviceSessionLength"/>
 ## OneSignal.updateDeviceSessionLength
 Method description
 
@@ -137,7 +115,6 @@ Method description
 | state     | String| Required: Set to 'ping'
 | activeTime| Number| Required: The lesser of: The number of seconds since either: 1. on_focus was last called OR 2. on_session or the device first registered (POST /players)
 
-<a name="getNotifications"/>
 ## OneSignal.getNotifications
 Method description
 
@@ -146,7 +123,6 @@ Method description
 | appKey| credentials| Required: REST API keys are used for API calls on a specific app's notifications or devices.
 | appId | credentials| Required: Your app id for this device.
 
-<a name="getNotification"/>
 ## OneSignal.getNotification
 Method description
 
@@ -156,7 +132,6 @@ Method description
 | appId         | credentials| Required: Your app id for this device.
 | notificationId| String     | Required: Notification ID.
 
-<a name="trackNotificationOpen"/>
 ## OneSignal.trackNotificationOpen
 Method description
 
@@ -166,7 +141,6 @@ Method description
 | notificationId| String     | Required: Notification ID.
 | opened        | String     | Required: Set to `true`.
 
-<a name="sendNotification"/>
 ## OneSignal.sendNotification
 Method description
 
@@ -178,7 +152,7 @@ Method description
 | includedSegments       | Array      | Required: Comma-separated list of the segment names you want to target. Users in these segments will receive a notification. This targeting parameter is only compatible with excluded_segments. Example: Active Users, Inactive Users
 | excludedSegments       | Array      | Optional: Comma-separated list of segment that will be excluded when sending. Users in these segments will not receive a notification, even if they were included in included_segments. This targeting parameter is only compatible with included_segments. Example: Active Users, Inactive Users
 | includePlayerIds       | Array      | Optional: Comma-separated list of pecific players to send your notification to. Does not require API Auth Key. combine with other targeting parameters. Not compatible with any other targeting parameters. Example: 1dd608f2-c6a1-11e3-851d-000c2940e62c, 1dd608f2-c6a1-11e3-851d-000c2940e62c
-| contents               | JSON       | REQUIRED: unless content_available=true or template_id is set. The notification`s content (excluding the title), a map of language codes to text for each language. Each hash must have a language code string for a key, mapped to the localized text you would like users to receive for that language. English must be included in the hash.Example: `{"en": "English Message", "es": "Spanish Message"}`
+| contents               | JSON       | Required: unless content_available=true or template_id is set. The notification`s content (excluding the title), a map of language codes to text for each language. Each hash must have a language code string for a key, mapped to the localized text you would like users to receive for that language. English must be included in the hash.Example: `{"en": "English Message", "es": "Spanish Message"}`
 | headings               | JSON       | Optional: The notification`s title, a map of language codes to text for each language. Each hash must have a language code string for a key, mapped to the localized text you would like users to receive for that language. A default title may be displayed if a title is not provided. Example: `{"en": "English Title", "es": "Spanish Title"}`
 | templateId             | String     | Optional: Use a template you setup on our dashboard. You can override the template values by sending other parameters with the request. The template_id is the UUID found in the URL when viewing a template on our dashboard.
 | contentAvailable       | String     | Optional: Sends content-available=1 to wake your app to run custom native code.
@@ -222,7 +196,6 @@ Method description
 | isAdm                  | String     | Optional: Indicates whether to send to all devices registered under your app's Amazon Fire platform.
 | isChrome               | String     | Optional: Please see `isChromeWeb` for sending to web push users. This flag only applies to Google Chrome Apps & Extensions.
 
-<a name="cancelNotification"/>
 ## OneSignal.cancelNotification
 Method description
 
