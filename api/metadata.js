@@ -2,6 +2,7 @@ module.exports.do = function(req, res){
     res.status(200).send({
         'package': 'OneSignal',
         "tagline": "Onesignal package",
+        "keywords": ["API", "alert", "alerts", "marketing", "messaging", "mobile", "notification", "notifications", "notify", "push"],
         "description": "Push Notification delivery and automation.",
         'image': 'https://onesignal.com/images/notification_logo.png',
         'repo': 'https://github.com/RapidSoftwareSolutions/marketplace-onesignal-package',
