@@ -10,24 +10,24 @@ Push Notification delivery and automation.
 3. Copy and save your `OneSignal App ID` & `REST API Key`.
 
 ## OneSignal.getDevices
-Method description
+View the details of multiple devices in one of your OneSignal apps
 
-| Field | Type       | Description
-|-------|------------|----------
-| appKey| credentials| Required: REST API keys are used for API calls on a specific app's notifications or devices.
-| appId | credentials| Required: Your app id for this device.
+| Field     | Type       | Description
+|-----------|------------|----------
+| appKey    | credentials| Required: REST API keys are used for API calls on a specific app's notifications or devices.
+| appId     | credentials| Required: Your app id for this device.
 
 ## OneSignal.getDevice
-Method description
+View the details of an existing device in one of your OneSignal apps
 
-| Field   | Type       | Description
-|---------|------------|----------
-| appKey  | credentials| Required: REST API keys are used for API calls on a specific app's notifications or devices.
-| appId   | credentials| Required: Your app id for this device.
-| deviceId| String     | Required: Player's OneSignal ID.
+| Field     | Type       | Description
+|-----------|------------|----------
+| appKey    | credentials| Required: REST API keys are used for API calls on a specific app's notifications or devices.
+| appId     | credentials| Required: Your app id for this device.
+| deviceId  | String     | Required: Player's OneSignal ID.
 
 ## OneSignal.addDevice
-Method description
+Register a new device to one of your OneSignal apps
 
 | Field            | Type       | Description
 |------------------|------------|----------
@@ -50,11 +50,11 @@ Method description
 | lastActive       | Number     | Optional: Unixtime when the player was last active.
 | testType         | Number     | Optional: This is used in deciding whether to use your iOS Sandbox or Production push certificate when sending a push when both have been uploaded. Set to the iOS provisioning profile that was used to build your app. `1` = Development; `2` = Ad-Hoc. Omit this field for App Store builds.
 | notificationTypes| String     | Optional: `1` = subscribed; `-2` = unsubscribed. iOS - These values are set each time the user opens the app from the SDK. Use the SDK function set Subscription instead. Android - You may set this but you can no longer use the SDK method setSubscription later in your app as it will create synchronization issues.
-| lat              | Double     | Optional: Latitude of the device, used for geotagging to segment on.
-| long             | Double     | Optional: Longitude of the device, used for geotagging to segment on.
+| lat              | String     | Optional: Latitude of the device, used for geotagging to segment on.
+| long             | String     | Optional: Longitude of the device, used for geotagging to segment on.
 
 ## OneSignal.editDevice
-Method description
+Update an existing device in one of your OneSignal apps
 
 | Field            | Type       | Description
 |------------------|------------|----------
@@ -77,72 +77,72 @@ Method description
 | lastActive       | Number     | Optional: Unixtime when the player was last active.
 | testType         | Number     | Optional: This is used in deciding whether to use your iOS Sandbox or Production push certificate when sending a push when both have been uploaded. Set to the iOS provisioning profile that was used to build your app. `1` = Development; `2` = Ad-Hoc. Omit this field for App Store builds.
 | notificationTypes| String     | Optional: `1` = subscribed; `-2` = unsubscribed. iOS - These values are set each time the user opens the app from the SDK. Use the SDK function set Subscription instead. Android - You may set this but you can no longer use the SDK method setSubscription later in your app as it will create synchronization issues.
-| lat              | Double     | Optional: Latitude of the device, used for geotagging to segment on.
-| long             | Double     | Optional: Longitude of the device, used for geotagging to segment on.
+| lat              | String     | Optional: Latitude of the device, used for geotagging to segment on.
+| long             | String     | Optional: Longitude of the device, used for geotagging to segment on.
 
 ## OneSignal.createDeviceSession
-Method description
+Update a device's session information
 
-| Field      | Type  | Description
-|------------|-------|----------
-| deviceId   | String| Required: The device's OneSignal ID.
-| identifier | String| Optional: Push notification identifier from Google or Apple. For Apple push identifiers, you must strip all non alphanumeric characters. Example: `ce777617da7f548fe7a9ab6febb56`.
-| language   | String| Optional: Language code. Typically lower case two letters, except for Chinese where it must be one of zh-Hans or zh-Hant. Example: `en`.
-| timezone   | Number| Optional: Number of seconds away from UTC. Example: `-28800`.
-| gameVersion| String| Optional: Version of your app. Example: `1.1`.
-| deviceOs   | String| Optional: Device operating system version. Example: `7.0.4`.
-| adId       | String| Optional: The ad id for the device's platform: Android = `Advertising Id`; iOS = `identifierForVendor`; WP8.0 = `DeviceUniqueId`; WP8.1 = `AdvertisingId`.
-| sdk        | String| Optional: Name and version of the plugin that's calling this API method (if any).
-| tags       | JSON  | Optional: Custom tags for the player. Only support string key value pairs. Does not support arrays or other nested objects. Example: `{"foo":"bar","this":"that"}`.
+| Field       | Type  | Description
+|-------------|-------|----------
+| deviceId    | String| Required: The device's OneSignal ID.
+| identifier  | String| Optional: Push notification identifier from Google or Apple. For Apple push identifiers, you must strip all non alphanumeric characters. Example: `ce777617da7f548fe7a9ab6febb56`.
+| language    | String| Optional: Language code. Typically lower case two letters, except for Chinese where it must be one of zh-Hans or zh-Hant. Example: `en`.
+| timezone    | Number| Optional: Number of seconds away from UTC. Example: `-28800`.
+| gameVersion | String| Optional: Version of your app. Example: `1.1`.
+| deviceOs    | String| Optional: Device operating system version. Example: `7.0.4`.
+| adId        | String| Optional: The ad id for the device's platform: Android = `Advertising Id`; iOS = `identifierForVendor`; WP8.0 = `DeviceUniqueId`; WP8.1 = `AdvertisingId`.
+| sdk         | String| Optional: Name and version of the plugin that's calling this API method (if any).
+| tags        | JSON  | Optional: Custom tags for the player. Only support string key value pairs. Does not support arrays or other nested objects. Example: `{"foo":"bar","this":"that"}`.
 
 ## OneSignal.addDevicePurchase
-Method description
+Track a new purchase in your app
 
-| Field         | Type  | Description
-|---------------|-------|----------
-| deviceId      | String| Required: The device's OneSignal ID.
-| purchaseSku   | String| Required: The unique identifier of the purchased item.
-| purchaseAmount| String| Required: The amount, in USD, spent purchasing the item.
-| purchaseIso   | Number| Required: The 3-letter ISO 4217 currency code. Required for correct storage and conversion of amount.
-| existing      | String| Pass true on the first run of your app if you're tracking existing non-consumable purchases. This prevents tracking the same purchases more than once if the user re-installs your app.
+| Field             | Type  | Description
+|-------------------|-------|----------
+| deviceId          | String| Required: The device's OneSignal ID.
+| purchaseSku       | String| Required: The unique identifier of the purchased item.
+| purchaseAmount    | String| Required: The amount, in USD, spent purchasing the item.
+| purchaseIso       | Number| Required: The 3-letter ISO 4217 currency code. Required for correct storage and conversion of amount.
+| existing          | String| Pass true on the first run of your app if you're tracking existing non-consumable purchases. This prevents tracking the same purchases more than once if the user re-installs your app.
 
 ## OneSignal.updateDeviceSessionLength
-Method description
+Update a device's session length upon app resuming
 
-| Field     | Type  | Description
-|-----------|-------|----------
-| deviceId  | String| Required: The device's OneSignal ID.
-| state     | String| Required: Set to 'ping'
-| activeTime| Number| Required: The lesser of: The number of seconds since either: 1. on_focus was last called OR 2. on_session or the device first registered (POST /players)
+| Field       | Type  | Description
+|-------------|-------|----------
+| deviceId    | String| Required: The device's OneSignal ID.
+| state       | String| Required: Set to 'ping'
+| activeTime  | Number| Required: The lesser of: The number of seconds since either: 1. on_focus was last called OR 2. on_session or the device first registered (POST /players)
 
 ## OneSignal.getNotifications
-Method description
+View the details of multiple notifications
 
-| Field | Type       | Description
-|-------|------------|----------
-| appKey| credentials| Required: REST API keys are used for API calls on a specific app's notifications or devices.
-| appId | credentials| Required: Your app id for this device.
+| Field     | Type       | Description
+|-----------|------------|----------
+| appKey    | credentials| Required: REST API keys are used for API calls on a specific app's notifications or devices.
+| appId     | credentials| Required: Your app id for this device.
 
 ## OneSignal.getNotification
-Method description
+View the details of a single notification
 
-| Field         | Type       | Description
-|---------------|------------|----------
-| appKey        | credentials| Required: REST API keys are used for API calls on a specific app's notifications or devices.
-| appId         | credentials| Required: Your app id for this device.
-| notificationId| String     | Required: Notification ID.
+| Field             | Type       | Description
+|-------------------|------------|----------
+| appKey            | credentials| Required: REST API keys are used for API calls on a specific app's notifications or devices.
+| appId             | credentials| Required: Your app id for this device.
+| notificationId    | String     | Required: Notification ID.
 
 ## OneSignal.trackNotificationOpen
-Method description
+Track when users open a notification
 
-| Field         | Type       | Description
-|---------------|------------|----------
-| appId         | credentials| Required: OneSignal app id.
-| notificationId| String     | Required: Notification ID.
-| opened        | String     | Required: Set to `true`.
+| Field             | Type       | Description
+|-------------------|------------|----------
+| appId             | credentials| Required: OneSignal app id.
+| notificationId    | String     | Required: Notification ID.
+| opened            | String     | Required: Set to `true`.
 
 ## OneSignal.sendNotification
-Method description
+Sends notifications to your users
 
 | Field                  | Type       | Description
 |------------------------|------------|----------
@@ -152,7 +152,7 @@ Method description
 | includedSegments       | Array      | Required: Comma-separated list of the segment names you want to target. Users in these segments will receive a notification. This targeting parameter is only compatible with excluded_segments. Example: Active Users, Inactive Users
 | excludedSegments       | Array      | Optional: Comma-separated list of segment that will be excluded when sending. Users in these segments will not receive a notification, even if they were included in included_segments. This targeting parameter is only compatible with included_segments. Example: Active Users, Inactive Users
 | includePlayerIds       | Array      | Optional: Comma-separated list of pecific players to send your notification to. Does not require API Auth Key. combine with other targeting parameters. Not compatible with any other targeting parameters. Example: 1dd608f2-c6a1-11e3-851d-000c2940e62c, 1dd608f2-c6a1-11e3-851d-000c2940e62c
-| contents               | JSON       | Required: unless content_available=true or template_id is set. The notification`s content (excluding the title), a map of language codes to text for each language. Each hash must have a language code string for a key, mapped to the localized text you would like users to receive for that language. English must be included in the hash.Example: `{"en": "English Message", "es": "Spanish Message"}`
+| contents               | JSON       | REQUIRED: unless content_available=true or template_id is set. The notification`s content (excluding the title), a map of language codes to text for each language. Each hash must have a language code string for a key, mapped to the localized text you would like users to receive for that language. English must be included in the hash.Example: `{"en": "English Message", "es": "Spanish Message"}`
 | headings               | JSON       | Optional: The notification`s title, a map of language codes to text for each language. Each hash must have a language code string for a key, mapped to the localized text you would like users to receive for that language. A default title may be displayed if a title is not provided. Example: `{"en": "English Title", "es": "Spanish Title"}`
 | templateId             | String     | Optional: Use a template you setup on our dashboard. You can override the template values by sending other parameters with the request. The template_id is the UUID found in the URL when viewing a template on our dashboard.
 | contentAvailable       | String     | Optional: Sends content-available=1 to wake your app to run custom native code.
@@ -197,11 +197,11 @@ Method description
 | isChrome               | String     | Optional: Please see `isChromeWeb` for sending to web push users. This flag only applies to Google Chrome Apps & Extensions.
 
 ## OneSignal.cancelNotification
-Method description
+Stop a scheduled or currently outgoing notification
 
-| Field         | Type       | Description
-|---------------|------------|----------
-| appKey        | credentials| Required: REST API keys are used for API calls on a specific app's notifications or devices.
-| appId         | credentials| Required: Your app id for this device.
-| notificationId| String     | Required: Notification ID.
+| Field             | Type       | Description
+|-------------------|------------|----------
+| appKey            | credentials| Required: REST API keys are used for API calls on a specific app's notifications or devices.
+| appId             | credentials| Required: Your app id for this device.
+| notificationId    | String     | Required: Notification ID.
 

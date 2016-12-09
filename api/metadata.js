@@ -14,6 +14,7 @@ module.exports.do = function(req, res){
         },
         'blocks': [{
             "name":"getDevices",
+            "description": "View the details of multiple devices in one of your OneSignal apps",
             "args":[
                 {
                     name: "appKey",
@@ -40,6 +41,7 @@ module.exports.do = function(req, res){
             ]
         }, {
             "name":"getDevice",
+            "description": "View the details of an existing device in one of your OneSignal apps",
             "args":[
                 {
                     name: "appKey",
@@ -72,6 +74,7 @@ module.exports.do = function(req, res){
             ]
         }, {
             "name":"addDevice",
+            "description": "Register a new device to one of your OneSignal apps",
             "args":[
                 {
                     name: "appId",
@@ -211,6 +214,7 @@ module.exports.do = function(req, res){
             ]
         }, {
             "name":"editDevice",
+            "description": "Update an existing device in one of your OneSignal apps",
             "args":[
                 {
                     name: "appId",
@@ -350,6 +354,7 @@ module.exports.do = function(req, res){
             ]
         }, {
             "name":"createDeviceSession",
+            "description": "Update a device's session information",
             "args":[
                 {
                     name: "deviceId",
@@ -417,6 +422,7 @@ module.exports.do = function(req, res){
             ]
         }, {
             "name":"addDevicePurchase",
+            "description": "Track a new purchase in your app",
             "args":[
                 {
                     name: "deviceId",
@@ -461,6 +467,7 @@ module.exports.do = function(req, res){
             ]
         }, {
             "name":"updateDeviceSessionLength",
+            "description": "Update a device's session length upon app resuming",
             "args":[
                 {
                     name: "deviceId",
@@ -493,6 +500,7 @@ module.exports.do = function(req, res){
             ]
         }, {
             "name":"getNotifications",
+            "description": "View the details of multiple notifications",
             "args":[
                 {
                     name: "appKey",
@@ -519,6 +527,7 @@ module.exports.do = function(req, res){
             ]
         }, {
             "name":"getNotification",
+            "description": "View the details of a single notification",
             "args":[
                 {
                     name: "appKey",
@@ -551,6 +560,7 @@ module.exports.do = function(req, res){
             ]
         }, {
             "name":"trackNotificationOpen",
+            "description": "Track when users open a notification",
             "args":[
                 {
                     name: "appId",
@@ -583,6 +593,7 @@ module.exports.do = function(req, res){
             ]
         }, {
             "name":"sendNotification",
+            "description": "Sends notifications to your users",
             "args":[
                 {
                     name: "appKey",
@@ -884,6 +895,7 @@ module.exports.do = function(req, res){
             ]
         }, {
             "name":"cancelNotification",
+            "description": "Stop a scheduled or currently outgoing notification",
             "args":[
                 {
                     name: "appKey",
