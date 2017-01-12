@@ -644,6 +644,7 @@ module.exports.do = function(req, res){
                     name: "headings",
                     type: "JSON",
                     info: 'Optional: The notification`s title, a map of language codes to text for each language. Each hash must have a language code string for a key, mapped to the localized text you would like users to receive for that language. A default title may be displayed if a title is not provided. Example: `{"en": "English Title", "es": "Spanish Title"}`',
+                    required: false,
                 },
                 {
                     name: "templateId",
