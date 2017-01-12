@@ -146,6 +146,7 @@ module.exports.do = function(req, res){
                     name: "tags",
                     type: "JSON", // Hash
                     info: 'Optional: Custom tags for the player. Only support string key value pairs. Does not support arrays or other nested objects. Example: `{"foo":"bar","this":"that"}`.',
+                    required: false,
                 },
                 {
                     name: "amountSpent",
@@ -286,6 +287,7 @@ module.exports.do = function(req, res){
                     name: "tags",
                     type: "JSON", // Hash
                     info: 'Optional: Custom tags for the player. Only support string key value pairs. Does not support arrays or other nested objects. Example: `{"foo":"bar","this":"that"}`.',
+                    required: false,
                 },
                 {
                     name: "amountSpent",
@@ -408,6 +410,7 @@ module.exports.do = function(req, res){
                     name: "tags",
                     type: "JSON", // Hash
                     info: 'Optional: Custom tags for the player. Only support string key value pairs. Does not support arrays or other nested objects. Example: `{"foo":"bar","this":"that"}`.',
+                    required: false,
                 },
             ],
             'callbacks':[
@@ -635,6 +638,7 @@ module.exports.do = function(req, res){
                     name: "contents",
                     type: "JSON",
                     info: 'REQUIRED: unless content_available=true or template_id is set. The notification`s content (excluding the title), a map of language codes to text for each language. Each hash must have a language code string for a key, mapped to the localized text you would like users to receive for that language. English must be included in the hash.Example: `{"en": "English Message", "es": "Spanish Message"}`',
+                    required: true,
                 },
                 {
                     name: "headings",
@@ -663,6 +667,7 @@ module.exports.do = function(req, res){
                     name: "data",
                     type: "JSON",
                     info: 'Optional: A custom map of data that is passed back to your app. Example: `{"abc": "123", "foo": "bar"}`',
+                    required: false,
                 },
                 {
                     name: "url",
@@ -692,11 +697,13 @@ module.exports.do = function(req, res){
                     name: "buttons",
                     type: "JSON",
                     info: 'Optional: Buttons to add to the notification. Icon only works for Android. Example: `[{"id": "id1", "text": "button1", "icon": "ic_menu_share"}, {"id": "id2", "text": "button2", "icon": "ic_menu_send"}]`',
+                    required: false,
                 },
                 {
                     name: "webButtons",
                     type: "JSON",
                     info: 'Optional: Add action buttons to the notification. The id field is required. `[{"id": "like-button", "text": "Like", "icon": "http://i.imgur.com/N8SN8ZS.png", "url": "https://yoursite.com"}, {"id": "read-more-button", "text": "Read more", "icon": "http://i.imgur.com/MIxJp1L.png", "url": "https://yoursite.com"}]`',
+                    required: false,
                 },
                 {
                     name: "iosCategory",
@@ -708,6 +715,7 @@ module.exports.do = function(req, res){
                     name: "androidBackgroundLayout",
                     type: "JSON",
                     info: 'Optional: Allowing setting a background image for the notification. This is a JSON object containing the following keys. `image` - Asset file, android resource name, or URL to remote image. recommend size: 1582x256; `headings_color` - Title text color ARGB Hex format. Example(Blue): "FF0000FF". `contents_color` - Body text color ARGB Hex format. Example(Red): "FFFF0000". Example: `{"image": "https://domain.com/background_image.jpg", "headings_color": "FFFF0000", "contents_color": "FF00FF00"}`',
+                    required: false,
                 },
                 {
                     name: "smallIcon",
@@ -791,6 +799,7 @@ module.exports.do = function(req, res){
                     name: "androidVisibility",
                     type: "Number",
                     info: 'Optional: `1` = Public (default) (Shows the full message on the lock screen unless the user has disabled all notifications from showing on the lock screen. Please consider the user and mark private if the contents are.) `0` = Private (Hides message contents on lock screen if the user set "Hide sensitive notification content" in the system settings) `-1` = Secret (Notification does not show on the lock screen at all)',
+                    required: false,
                 },
                 {
                     name: "iosBadgeType",
