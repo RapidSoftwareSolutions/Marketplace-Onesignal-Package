@@ -1,3 +1,5 @@
+[![](https://scdn.rapidapi.com/RapidAPI_banner.png)](https://rapidapi.com/package/Onesignal/functions?utm_source=RapidAPIGitHub_OneSignalFunctions&utm_medium=button&utm_content=RapidAPI_GitHub)
+
 # OneSignal Package
 Push Notification delivery and automation.
 * Domain: onesignal.com
