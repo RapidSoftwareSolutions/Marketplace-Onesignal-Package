@@ -21,6 +21,7 @@ module.exports = (req, res) => {
         url,
         data,
         bigPicture,
+        filters,
         admBigPicture,
         chromeBigPicture,
         buttons,
@@ -69,6 +70,7 @@ module.exports = (req, res) => {
     }
 
     includedSegments = _.array(includedSegments);
+    filters          = _.array(filters);
     excludedSegments = _.array(excludedSegments);
     includePlayerIds = _.array(includePlayerIds);
     appIds           = _.array(appIds);
@@ -111,6 +113,7 @@ module.exports = (req, res) => {
         include_player_ids: includePlayerIds,
         contents,
         headings,
+        filters,
         template_id: templateId,
         content_available: contentAvailable,
         mutable_content: mutableContent,
