@@ -659,6 +659,12 @@ module.exports.do = function(req, res){
                     required: false,
                 },
                 {
+                    name: "filters",
+                    type: "String",
+                    info: "Optional: The filters parameter targets notification recipients using an array of JSON objects containing field conditions to check.",
+                    required: false
+                }
+                {
                     name: "mutableContent",
                     type: "String", //Boolean
                     info: "Optional: Allows you to change the notification content in your app before it is displayed. ",
