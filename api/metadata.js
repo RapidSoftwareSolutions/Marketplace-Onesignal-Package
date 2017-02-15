@@ -663,7 +663,7 @@ module.exports.do = function(req, res){
                     type: "String",
                     info: "Optional: The filters parameter targets notification recipients using an array of JSON objects containing field conditions to check.",
                     required: false
-                }
+                },
                 {
                     name: "mutableContent",
                     type: "String", //Boolean
