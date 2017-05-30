@@ -198,7 +198,7 @@ module.exports.do = function(req, res){
                     required: false,
                 },
                 {
-                    name: "Coordinates",
+                    name: "coordinates",
                     type: "Map",
                     info: "Optional: Latitude and Longitude of the device, used for geotagging to segment on. Example: 51.514084206610455, -51.514084206610455",
                     required: false,
@@ -323,28 +323,24 @@ module.exports.do = function(req, res){
                 },
                 {
                     name: "testType",
-                    type: "Number",
+                    type: "Select",
+                    options: ["1","2"],
                     info: "Optional: This is used in deciding whether to use your iOS Sandbox or Production push certificate when sending a push when both have been uploaded. Set to the iOS provisioning profile that was used to build your app. `1` = Development; `2` = Ad-Hoc. Omit this field for App Store builds.",
                     required: false,
                 },
                 {
                     name: "notificationTypes",
-                    type: "String",
+                    type: "Select",
+                    options: ["1","-2"],
                     info: "Optional: `1` = subscribed; `-2` = unsubscribed. iOS - These values are set each time the user opens the app from the SDK. Use the SDK function set Subscription instead. Android - You may set this but you can no longer use the SDK method setSubscription later in your app as it will create synchronization issues.",
                     required: false,
                 },
                 {
-                    name: "lat",
-                    type: "String", //Double
-                    info: "Optional: Latitude of the device, used for geotagging to segment on.",
+                    name: "coordinates",
+                    type: "Map",
+                    info: "Optional: Latitude and Longitude of the device, used for geotagging to segment on. Example: 51.514084206610455, -51.514084206610455",
                     required: false,
-                },
-                {
-                    name: "long",
-                    type: "String", //Double
-                    info: "Optional: Longitude of the device, used for geotagging to segment on.",
-                    required: false,
-                },
+                }
             ],
             'callbacks':[
                 {

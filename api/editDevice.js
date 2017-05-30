@@ -28,6 +28,7 @@ module.exports = (req, res) => {
         notificationTypes,
         lat,
         long,
+        coordinates,
         to="to" } = req.body.args;
 
     let r  = {
@@ -38,6 +39,11 @@ module.exports = (req, res) => {
     if(!deviceId || !appId) {
         _.echoBadEnd(r, to, res, 'deviceId, appId');
         return;
+    }
+
+    if(coordinates) {
+        lat = coordinates.split(',')[0];
+        long = coordinates.split(',')[1];
     }
 
     let bodyOptions = {
