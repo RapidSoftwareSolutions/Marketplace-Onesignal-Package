@@ -13,7 +13,8 @@ module.exports.do = function(req, res){
                 'appKey', 'appId'
             ]
         },
-        'blocks': [{
+        'blocks': [
+            {
             "name":"getDevices",
             "description": "View the details of multiple devices in one of your OneSignal apps",
             "args":[
@@ -40,7 +41,8 @@ module.exports.do = function(req, res){
                     'info': 'Success'
                 }
             ]
-        }, {
+        },
+            {
             "name":"getDevice",
             "description": "View the details of an existing device in one of your OneSignal apps",
             "args":[
@@ -73,7 +75,8 @@ module.exports.do = function(req, res){
                     'info': 'Success'
                 }
             ]
-        }, {
+        },
+            {
             "name":"addDevice",
             "description": "Register a new device to one of your OneSignal apps",
             "args":[
@@ -211,7 +214,8 @@ module.exports.do = function(req, res){
                     'info': 'Success'
                 }
             ]
-        }, {
+        },
+            {
             "name":"editDevice",
             "description": "Update an existing device in one of your OneSignal apps",
             "args":[
@@ -352,7 +356,8 @@ module.exports.do = function(req, res){
                     'info': 'Success'
                 }
             ]
-        }, {
+        },
+            {
             "name":"createDeviceSession",
             "description": "Update a device's session information",
             "args":[
@@ -421,7 +426,8 @@ module.exports.do = function(req, res){
                     'info': 'Success'
                 }
             ]
-        }, {
+        },
+            {
             "name":"addDevicePurchase",
             "description": "Track a new purchase in your app",
             "args":[
@@ -466,7 +472,8 @@ module.exports.do = function(req, res){
                     'info': 'Success'
                 }
             ]
-        }, {
+        },
+            {
             "name":"updateDeviceSessionLength",
             "description": "Update a device's session length upon app resuming",
             "args":[
@@ -499,7 +506,8 @@ module.exports.do = function(req, res){
                     'info': 'Success'
                 }
             ]
-        }, {
+        },
+            {
             "name":"getNotifications",
             "description": "View the details of multiple notifications",
             "args":[
@@ -526,7 +534,8 @@ module.exports.do = function(req, res){
                     'info': 'Success'
                 }
             ]
-        }, {
+        },
+            {
             "name":"getNotification",
             "description": "View the details of a single notification",
             "args":[
@@ -559,7 +568,8 @@ module.exports.do = function(req, res){
                     'info': 'Success'
                 }
             ]
-        }, {
+        },
+            {
             "name":"trackNotificationOpen",
             "description": "Track when users open a notification",
             "args":[
@@ -592,7 +602,8 @@ module.exports.do = function(req, res){
                     'info': 'Success'
                 }
             ]
-        }, {
+        },
+            {
             "name":"sendNotification",
             "description": "Sends notifications to your users",
             "args":[
@@ -907,7 +918,8 @@ module.exports.do = function(req, res){
                     'info': 'Success'
                 }
             ]
-        }, {
+        },
+            {
             "name":"cancelNotification",
             "description": "Stop a scheduled or currently outgoing notification",
             "args":[
@@ -940,6 +952,8 @@ module.exports.do = function(req, res){
                     'info': 'Success'
                 }
             ]
-        },]
-    })
+        },
+        ]
+    }
+    )
 }
