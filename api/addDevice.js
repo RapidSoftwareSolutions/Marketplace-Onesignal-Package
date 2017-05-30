@@ -26,6 +26,7 @@ module.exports = (req, res) => {
         lastActive, 
         testType,
         notificationTypes,
+        coordinates,
         lat,
         long,
         to="to" } = req.body.args;
@@ -38,6 +39,11 @@ module.exports = (req, res) => {
     if(!appId || !deviceType) {
         _.echoBadEnd(r, to, res, 'appId, deviceType');
         return;
+    }
+
+    if(coordinates) {
+        lat = coordinates.split(',')[0];
+        long = coordinates.split(',')[1];
     }
 
     let bodyOptions = {
@@ -68,7 +74,7 @@ module.exports = (req, res) => {
 
     let options = {
         method: 'POST',
-        url: `https://onesignal.com/api/v1/players`, 
+        url: `https://onesignal.com/api/v1/players`,
         body: JSON.stringify(bodyOptions),
         headers: {
             'Content-Type': `application/json`
@@ -78,7 +84,7 @@ module.exports = (req, res) => {
     return request(options, (err, response, body) => {
         if(!err && response.statusCode == 200) {
             r.contextWrites[to] = JSON.parse(body);
-            r.callback = 'success'; 
+            r.callback = 'success';
         } else {
             r.contextWrites[to] = JSON.parse(err || body);
             r.callback = 'error';
@@ -87,4 +93,5 @@ module.exports = (req, res) => {
         res.status(200).send(r);
     })
     //.auth(null, null, true, apiKey);
+
 }

@@ -1,5 +1,6 @@
 module.exports.do = function(req, res){
-    res.status(200).send({
+    res.status(200).send(
+        {
         'package': 'OneSignal',
         "tagline": "Onesignal package",
         "keywords": ["API", "alert", "alerts", "marketing", "messaging", "mobile", "notification", "notifications", "notify", "push"],
@@ -194,17 +195,11 @@ module.exports.do = function(req, res){
                     required: false,
                 },
                 {
-                    name: "lat",
-                    type: "String", //Double
-                    info: "Optional: Latitude of the device, used for geotagging to segment on.",
+                    name: "Coordinates",
+                    type: "Map",
+                    info: "Optional: Latitude and Longitude of the device, used for geotagging to segment on. Example: 51.514084206610455, -51.514084206610455",
                     required: false,
-                },
-                {
-                    name: "long",
-                    type: "String", //Double
-                    info: "Optional: Longitude of the device, used for geotagging to segment on.",
-                    required: false,
-                },
+                }
             ],
             'callbacks':[
                 {
