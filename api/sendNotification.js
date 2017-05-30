@@ -160,7 +160,7 @@ module.exports = (req, res) => {
 
     let options = {
         method: 'POST',
-        url: `https://onesignal.com/api/v1/notifications`, 
+        url: `https://onesignal.com/api/v1/notifications`,
         body: JSON.stringify(bodyOptions),
         headers: {
             'Content-Type':  `application/json`,
@@ -171,7 +171,7 @@ module.exports = (req, res) => {
     return request(options, (err, response, body) => {
         if(!err && response.statusCode == 200) {
             r.contextWrites[to] = JSON.parse(body);
-            r.callback = 'success'; 
+            r.callback = 'success';
         } else {
             r.contextWrites[to] = JSON.parse(err || body);
             r.callback = 'error';
