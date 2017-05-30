@@ -617,9 +617,14 @@ module.exports.do = function(req, res){
                 },
                 {
                     name: "appIds",
-                    type: "Array",
-                    info: "Optional: Example: '`2dd608f2-a6a1-11e3-251d-400c2940e62b`, `2dd608f2-a6a1-11e3-251d-500f2950e61c`'.",
+                    type: "List",
+                    info: "Optional: Example: [`2dd608f2-a6a1-11e3-251d-400c2940e62b`, `2dd608f2-a6a1-11e3-251d-500f2950e61c`].",
                     required: false,
+                    structure: {
+                        name: "id",
+                        type: "String",
+                        info: "Application ID"
+                    }
                 },
                 {
                     name: "includedSegments",
