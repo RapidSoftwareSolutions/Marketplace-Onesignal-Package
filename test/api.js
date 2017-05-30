@@ -115,35 +115,35 @@ describe('OneSignal package', () => {
         });
     });
 
-    it('/getNotification', function() {
-        this.timeout(10000);
-        
-        return request(app)
-        .post(`/api/${global.PACKAGE_NAME}/getNotification`)
-        .send({args:{appId, appKey, notificationId}})
-        .expect(200)
-        .then((res) => {
-            assert.equal(res.body.callback, 'success');
-        });
-    });
+    // it('/getNotification', function() {
+    //     this.timeout(10000);
+    //
+    //     return request(app)
+    //     .post(`/api/${global.PACKAGE_NAME}/getNotification`)
+    //     .send({args:{appId, appKey, notificationId}})
+    //     .expect(200)
+    //     .then((res) => {
+    //         assert.equal(res.body.callback, 'success');
+    //     });
+    // });
 
-    it('/trackNotificationOpen', () => {
-        return request(app)
-        .post(`/api/${global.PACKAGE_NAME}/trackNotificationOpen`)
-        .send({args:{appId, notificationId, opened}})
-        .expect(200)
-        .then((res) => {
-            assert.equal(res.body.callback, 'success');
-        });
-    });
-
-    it('/cancelNotification', () => {
-        return request(app)
-        .post(`/api/${global.PACKAGE_NAME}/cancelNotification`)
-        .send({args:{appId, appKey, notificationId}})
-        .expect(200)
-        .then((res) => {
-            assert.equal(res.body.callback, 'success');
-        });
-    });
+    // it('/trackNotificationOpen', () => {
+    //     return request(app)
+    //     .post(`/api/${global.PACKAGE_NAME}/trackNotificationOpen`)
+    //     .send({args:{appId, notificationId, opened}})
+    //     .expect(200)
+    //     .then((res) => {
+    //         assert.equal(res.body.callback, 'success');
+    //     });
+    // });
+    //
+    // it('/cancelNotification', () => {
+    //     return request(app)
+    //     .post(`/api/${global.PACKAGE_NAME}/cancelNotification`)
+    //     .send({args:{appId, appKey, notificationId}})
+    //     .expect(200)
+    //     .then((res) => {
+    //         assert.equal(res.body.callback, 'success');
+    //     });
+    // });
 });
