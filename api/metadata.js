@@ -84,7 +84,8 @@ module.exports.do = function(req, res){
                 },
                 {
                     name: "deviceType",
-                    type: "Number",
+                    type: "Select",
+                    options: ["1","2","3","4","5","6","7","8","9"],
                     info: "Required: The device's platform: `0` = iOS; `1` = Android; `2` = Amazon; `3` = WindowsPhone(MPNS); `4` = Chrome Apps / Extensions; `5` = Chrome Web Push; `6` = WindowsPhone(WNS); `7` = Safari; `8` = Firefox; `9` = MacOS",
                     required: true,
                 },
@@ -180,13 +181,15 @@ module.exports.do = function(req, res){
                 },
                 {
                     name: "testType",
-                    type: "Number",
+                    type: "Select",
+                    options: ["1","2"],
                     info: "Optional: This is used in deciding whether to use your iOS Sandbox or Production push certificate when sending a push when both have been uploaded. Set to the iOS provisioning profile that was used to build your app. `1` = Development; `2` = Ad-Hoc. Omit this field for App Store builds.",
                     required: false,
                 },
                 {
                     name: "notificationTypes",
-                    type: "String",
+                    type: "Select",
+                    options: ["1","-2"],
                     info: "Optional: `1` = subscribed; `-2` = unsubscribed. iOS - These values are set each time the user opens the app from the SDK. Use the SDK function set Subscription instead. Android - You may set this but you can no longer use the SDK method setSubscription later in your app as it will create synchronization issues.",
                     required: false,
                 },
