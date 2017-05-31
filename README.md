@@ -11,6 +11,15 @@ Push Notification delivery and automation.
 2. Goto `App Settings > Keys & IDs`.
 3. Copy and save your `OneSignal App ID` & `REST API Key`.
 
+## Custom datatypes:
+ |Datatype|Description|Example
+ |--------|-----------|----------
+ |Datepicker|String which includes date and time|```2016-05-28 00:00:00```
+ |Map|String which includes latitude and longitude coma separated|```50.37, 26.56```
+ |List|Simple array|```["123", "sample"]```
+ |Select|String with predefined values|```sample```
+ |Array|Array of objects|```[{"Second name":"123","Age":"12","Photo":"sdf","Draft":"sdfsdf"},{"name":"adi","Second name":"bla","Age":"4","Photo":"asfserwe","Draft":"sdfsdf"}] ```
+
 ## OneSignal.getDevices
 View the details of multiple devices in one of your OneSignal apps
 
@@ -150,10 +159,10 @@ Sends notifications to your users
 |------------------------|------------|----------
 | appKey                 | credentials| Required: REST API keys are used for API calls on a specific app's notifications or devices.
 | appId                  | credentials| Required: Your OneSignal application ID, which can be found in Keys & IDs. It is a UUID and looks similar to `8250eaf6-1a58-489e-b136-7c74a864b434`.
-| appIds                 | Array      | Optional: Example: '`2dd608f2-a6a1-11e3-251d-400c2940e62b`, `2dd608f2-a6a1-11e3-251d-500f2950e61c`'.
-| includedSegments       | Array      | Required: Comma-separated list of the segment names you want to target. Users in these segments will receive a notification. This targeting parameter is only compatible with excluded_segments. Example: Active Users, Inactive Users
-| excludedSegments       | Array      | Optional: Comma-separated list of segment that will be excluded when sending. Users in these segments will not receive a notification, even if they were included in included_segments. This targeting parameter is only compatible with included_segments. Example: Active Users, Inactive Users
-| includePlayerIds       | Array      | Optional: Comma-separated list of pecific players to send your notification to. Does not require API Auth Key. combine with other targeting parameters. Not compatible with any other targeting parameters. Example: 1dd608f2-c6a1-11e3-851d-000c2940e62c, 1dd608f2-c6a1-11e3-851d-000c2940e62c
+| appIds                 | List      | Optional: Example: '`2dd608f2-a6a1-11e3-251d-400c2940e62b`, `2dd608f2-a6a1-11e3-251d-500f2950e61c`'.
+| includedSegments       | List      | Required: Comma-separated list of the segment names you want to target. Users in these segments will receive a notification. This targeting parameter is only compatible with excluded_segments. Example: Active Users, Inactive Users
+| excludedSegments       | List      | Optional: Comma-separated list of segment that will be excluded when sending. Users in these segments will not receive a notification, even if they were included in included_segments. This targeting parameter is only compatible with included_segments. Example: Active Users, Inactive Users
+| includePlayerIds       | List      | Optional: Comma-separated list of pecific players to send your notification to. Does not require API Auth Key. combine with other targeting parameters. Not compatible with any other targeting parameters. Example: 1dd608f2-c6a1-11e3-851d-000c2940e62c, 1dd608f2-c6a1-11e3-851d-000c2940e62c
 | contents               | JSON       | REQUIRED: unless content_available=true or template_id is set. The notification`s content (excluding the title), a map of language codes to text for each language. Each hash must have a language code string for a key, mapped to the localized text you would like users to receive for that language. English must be included in the hash.Example: `{"en": "English Message", "es": "Spanish Message"}`
 | headings               | JSON       | Optional: The notification`s title, a map of language codes to text for each language. Each hash must have a language code string for a key, mapped to the localized text you would like users to receive for that language. A default title may be displayed if a title is not provided. Example: `{"en": "English Title", "es": "Spanish Title"}`
 | templateId             | String     | Optional: Use a template you setup on our dashboard. You can override the template values by sending other parameters with the request. The template_id is the UUID found in the URL when viewing a template on our dashboard.
