@@ -68,6 +68,7 @@ module.exports = (req, res) => {
         _.echoBadEnd(r, to, res, 'appId, appKey, contents');
         return;
     }
+    includedSegments = includedSegments.join(",");
 
     includedSegments = _.array(includedSegments);
     filters          = _.array(filters);
@@ -179,4 +180,5 @@ module.exports = (req, res) => {
 
         res.status(200).send(r);
     })
+
 }
