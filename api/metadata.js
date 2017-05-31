@@ -830,7 +830,8 @@ module.exports.do = function(req, res){
                         },
                         {
                             name: "androidVisibility",
-                            type: "Number",
+                            type: "Select",
+                            options: ["-1","0","1"],
                             info: 'Optional: `1` = Public (default) (Shows the full message on the lock screen unless the user has disabled all notifications from showing on the lock screen. Please consider the user and mark private if the contents are.) `0` = Private (Hides message contents on lock screen if the user set "Hide sensitive notification content" in the system settings) `-1` = Secret (Notification does not show on the lock screen at all)',
                             required: false,
                         },
@@ -878,7 +879,8 @@ module.exports.do = function(req, res){
                         },
                         {
                             name: "isAnyWeb",
-                            type: "String", //Boolean
+                            type: "Select", //Boolean
+                            options: ["isChromeWeb","isFirefox","isSafari"],
                             info: "Optional: Indicates whether to send to all subscribed web browser users, including Chrome, Firefox, and Safari. You may use this instead as a combined flag instead of separately enabling `isChromeWeb`, `isFirefox`, and `isSafari`, though the three options are equivalent to this one.",
                             required: false,
                         },
