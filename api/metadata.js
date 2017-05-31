@@ -617,14 +617,19 @@ module.exports.do = function(req, res){
                         },
                         {
                             name: "appIds",
-                            type: "Array",
-                            info: "Optional: Example: '`2dd608f2-a6a1-11e3-251d-400c2940e62b`, `2dd608f2-a6a1-11e3-251d-500f2950e61c`'.",
+                            type: "List",
+                            info: "Optional: Example: [`2dd608f2-a6a1-11e3-251d-400c2940e62b`, `2dd608f2-a6a1-11e3-251d-500f2950e61c`].",
                             required: false,
+                            "structure": {
+                                "name": "id",
+                                "type": "String",
+                                "info": "App id"
+                            }
                         },
                         {
                             name: "includedSegments",
                             type: "List",
-                            info: "Required: Comma-separated list of the segment names you want to target. Users in these segments will receive a notification. This targeting parameter is only compatible with excluded_segments. Example: Active Users, Inactive Users",
+                            info: "Required: Comma-separated list of the segment names you want to target. Users in these segments will receive a notification. This targeting parameter is only compatible with excluded_segments. Example: [`Active Users`, `Inactive Users`]",
                             required: true,
                             "structure": {
                                 "name": "segment",
@@ -634,15 +639,26 @@ module.exports.do = function(req, res){
                         },
                         {
                             name: "excludedSegments",
-                            type: "Array",
-                            info: "Optional: Comma-separated list of segment that will be excluded when sending. Users in these segments will not receive a notification, even if they were included in included_segments. This targeting parameter is only compatible with included_segments. Example: Active Users, Inactive Users",
+                            type: "List",
+                            info: "Optional: Comma-separated list of segment that will be excluded when sending. Users in these segments will not receive a notification, even if they were included in included_segments. This targeting parameter is only compatible with included_segments. Example: [`Active Users`, `Inactive Users`]",
                             required: false,
+                            "structure": {
+                                "name": "segment",
+                                "type": "String",
+                                "info": "Example: Active Users"
+                            }
                         },
+
                         {
                             name: "includePlayerIds",
-                            type: "Array",
-                            info: "Optional: Comma-separated list of pecific players to send your notification to. Does not require API Auth Key. combine with other targeting parameters. Not compatible with any other targeting parameters. Example: 1dd608f2-c6a1-11e3-851d-000c2940e62c, 1dd608f2-c6a1-11e3-851d-000c2940e62c",
+                            type: "List",
+                            info: "Optional: Comma-separated list of pecific players to send your notification to. Does not require API Auth Key. combine with other targeting parameters. Not compatible with any other targeting parameters. Example: [`1dd608f2-c6a1-11e3-851d-000c2940e62c`, `1dd608f2-c6a1-11e3-851d-000c2940e62c`]",
                             required: false,
+                            "structure": {
+                                "name": "PlayerId",
+                                "type": "String",
+                                "info": "Player Id"
+                            }
                         },
                         {
                             name: "contents",

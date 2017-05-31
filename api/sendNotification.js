@@ -65,17 +65,27 @@ module.exports = (req, res) => {
     };
 
     if(!appId || !appKey || !contents) {
-        _.echoBadEnd(r, to, res, 'appId, appKey, contents');
+        _.echoBadEnd(r, to, res, 'appId, appKey, contents','includedSegments');
         return;
     }
-    includedSegments = includedSegments.join(",");
+    includedSegments = includedSegments.join(" , ");
+
+    if(includePlayerIds!=undefined){
+        includePlayerIds = includePlayerIds.join(" , ");
+    }
+    if(excludedSegments!=undefined){
+        excludedSegments = excludedSegments.join(" , ");
+    }
+    if(appIds!=undefined){
+        appIds = appIds.join(" , ");
+    }
+
 
     includedSegments = _.array(includedSegments);
+    appIds           = _.array(appIds);
     filters          = _.array(filters);
     excludedSegments = _.array(excludedSegments);
     includePlayerIds = _.array(includePlayerIds);
-    appIds           = _.array(appIds);
-
     contentAvailable = _.bool(contentAvailable);
     mutableContent   = _.bool(mutableContent);
     isIos            = _.bool(isIos);
@@ -95,7 +105,7 @@ module.exports = (req, res) => {
         if(data && typeof data == 'string')             data         = JSON.parse(data);
         if(buttons && typeof buttons == 'string')       buttons      = JSON.parse(buttons);
         if(webButtons && typeof webButtons == 'string') webButtons   = JSON.parse(webButtons);
-        if(androidBackgroundLayout && typeof androidBackgroundLayout == 'string') 
+        if(androidBackgroundLayout && typeof androidBackgroundLayout == 'string')
             androidBackgroundLayout = JSON.parse(androidBackgroundLayout);
 
     } catch(e) {
@@ -180,5 +190,4 @@ module.exports = (req, res) => {
 
         res.status(200).send(r);
     })
-
 }
