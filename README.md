@@ -61,8 +61,8 @@ Register a new device to one of your OneSignal apps
 | lastActive       | Number     | Optional: Unixtime when the player was last active.
 | testType         | Number     | Optional: This is used in deciding whether to use your iOS Sandbox or Production push certificate when sending a push when both have been uploaded. Set to the iOS provisioning profile that was used to build your app. `1` = Development; `2` = Ad-Hoc. Omit this field for App Store builds.
 | notificationTypes| String     | Optional: `1` = subscribed; `-2` = unsubscribed. iOS - These values are set each time the user opens the app from the SDK. Use the SDK function set Subscription instead. Android - You may set this but you can no longer use the SDK method setSubscription later in your app as it will create synchronization issues.
-| lat              | String     | Optional: Latitude of the device, used for geotagging to segment on.
-| long             | String     | Optional: Longitude of the device, used for geotagging to segment on.
+| coordinates      | Map     | Optional: Latitude and Longitude of the device, used for geotagging to segment on. Example: 51.514084206610455, -51.514084206610455
+
 
 ## OneSignal.editDevice
 Update an existing device in one of your OneSignal apps
@@ -88,8 +88,7 @@ Update an existing device in one of your OneSignal apps
 | lastActive       | Number     | Optional: Unixtime when the player was last active.
 | testType         | Number     | Optional: This is used in deciding whether to use your iOS Sandbox or Production push certificate when sending a push when both have been uploaded. Set to the iOS provisioning profile that was used to build your app. `1` = Development; `2` = Ad-Hoc. Omit this field for App Store builds.
 | notificationTypes| String     | Optional: `1` = subscribed; `-2` = unsubscribed. iOS - These values are set each time the user opens the app from the SDK. Use the SDK function set Subscription instead. Android - You may set this but you can no longer use the SDK method setSubscription later in your app as it will create synchronization issues.
-| lat              | String     | Optional: Latitude of the device, used for geotagging to segment on.
-| long             | String     | Optional: Longitude of the device, used for geotagging to segment on.
+| coordinates      | Map     | Optional: Latitude and Longitude of the device, used for geotagging to segment on. Example: 51.514084206610455, -51.514084206610455
 
 ## OneSignal.createDeviceSession
 Update a device's session information
