@@ -89,7 +89,7 @@ module.exports.do = function(req, res){
                         {
                             name: "deviceType",
                             type: "Select",
-                            options: ["1","2","3","4","5","6","7","8","9"],
+                            options: ["0","1","2","3","4","5","6","7","8","9"],
                             info: "Required: The device's platform: `0` = iOS; `1` = Android; `2` = Amazon; `3` = WindowsPhone(MPNS); `4` = Chrome Apps / Extensions; `5` = Chrome Web Push; `6` = WindowsPhone(WNS); `7` = Safari; `8` = Firefox; `9` = MacOS",
                             required: true,
                         },
@@ -447,7 +447,7 @@ module.exports.do = function(req, res){
                         },
                         {
                             name: "purchaseIso",
-                            type: "Number",
+                            type: "String",
                             info: "Required: The 3-letter ISO 4217 currency code. Required for correct storage and conversion of amount.",
                             required: true,
                         },
