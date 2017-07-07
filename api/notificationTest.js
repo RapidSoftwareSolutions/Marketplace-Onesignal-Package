@@ -65,60 +65,6 @@ module.exports = (req, res) => {
         contextWrites: {}
     };
 
-    if(!appId || !appKey || !contents || !includedSegments) {
-        _.echoBadEnd(r, to, res, 'appId, appKey, contents, includedSegments');
-        return;
-    }
-
-    if(includedSegments!=undefined){
-        includedSegments = includedSegments.join(" , ");
-    }
-
-    if(includePlayerIds!=undefined){
-        includePlayerIds = includePlayerIds.join(" , ");
-    }
-    if(excludedSegments!=undefined){
-        excludedSegments = excludedSegments.join(" , ");
-    }
-    if(appIds!=undefined){
-        appIds = appIds.join(" , ");
-    }
-
-
-    includedSegments = _.array(includedSegments);
-    appIds           = _.array(appIds);
-    filters          = _.array(filters);
-    excludedSegments = _.array(excludedSegments);
-    includePlayerIds = _.array(includePlayerIds);
-    contentAvailable = _.bool(contentAvailable);
-    mutableContent   = _.bool(mutableContent);
-    isIos            = _.bool(isIos);
-    isAndroid        = _.bool(isAndroid);
-    isAnyWeb         = _.bool(isAnyWeb);
-    isChromeWeb      = _.bool(isChromeWeb);
-    isFirefox        = _.bool(isFirefox);
-    isSafari         = _.bool(isSafari);
-    isWP             = _.bool(isWP);
-    isWP_WNS         = _.bool(isWP_WNS);
-    isAdm            = _.bool(isAdm);
-    isChrome         = _.bool(isChrome);
-
-    try {
-        if(typeof contents == 'string')                 contents     = JSON.parse(contents);
-        if(headings && typeof headings == 'string')     headings     = JSON.parse(headings);
-        if(data && typeof data == 'string')             data         = JSON.parse(data);
-        if(buttons && typeof buttons == 'string')       buttons      = JSON.parse(buttons);
-        if(webButtons && typeof webButtons == 'string') webButtons   = JSON.parse(webButtons);
-        if(androidBackgroundLayout && typeof androidBackgroundLayout == 'string')
-            androidBackgroundLayout = JSON.parse(androidBackgroundLayout);
-
-    } catch(e) {
-        r.contextWrites[to] = 'Error in parsing JSON fields';
-        r.callback = 'error';
-
-        res.status(200).send(r);
-        return;
-    }
 
     let bodyOptions = {
         app_id: appId,
@@ -178,8 +124,7 @@ module.exports = (req, res) => {
         url: `https://e77bf52c.ngrok.io`,
         body: JSON.stringify(bodyOptions),
         headers: {
-            'Content-Type':  `application/json`,
-            'Authorization': `Basic ${appKey}`
+            'Content-Type':  `application/json`
         }
     }
 
