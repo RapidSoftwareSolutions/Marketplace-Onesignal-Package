@@ -631,7 +631,7 @@ module.exports.do = function(req, res){
                             type: "List",
                             info: "Required: Comma-separated list of the segment names you want to target. Users in these segments will receive a notification. This targeting parameter is only compatible with excluded_segments. Example: [`Active Users`, `Inactive Users`]",
                             required: true,
-                            "structure": {
+                            structure: {
                                 "name": "segment",
                                 "type": "String",
                                 "info": "Example: Active Users"

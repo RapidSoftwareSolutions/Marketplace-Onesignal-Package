@@ -68,7 +68,10 @@ module.exports = (req, res) => {
         _.echoBadEnd(r, to, res, 'appId, appKey, contents','includedSegments');
         return;
     }
-    includedSegments = includedSegments.join(" , ");
+
+    if(includedSegments!=undefined){
+        includedSegments = includedSegments.join(" , ");
+    }
 
     if(includePlayerIds!=undefined){
         includePlayerIds = includePlayerIds.join(" , ");
