@@ -22,7 +22,7 @@ module.exports = (req, res) => {
         return;
     }
 
-    opened = opened == 'true' ? true : false;
+    opened = opened == 'true' ? 'true' : 'false';
 
     let bodyOptions = {
         app_id: appId,

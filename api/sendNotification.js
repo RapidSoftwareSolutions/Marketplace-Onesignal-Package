@@ -64,7 +64,7 @@ module.exports = (req, res) => {
         contextWrites: {}
     };
 
-    if(!appId || !appKey || !contents) {
+    if(!appId || !appKey || !contents || !includedSegments) {
         _.echoBadEnd(r, to, res, 'appId, appKey, contents','includedSegments');
         return;
     }
