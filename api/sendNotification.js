@@ -69,7 +69,7 @@ module.exports = (req, res) => {
         return;
     }
 
-    if(includedSegments!=undefined){
+    if(includedSegments!=undefined && typeof(includedSegments)!='string'){
         includedSegments = includedSegments.join(" , ");
     }
 
