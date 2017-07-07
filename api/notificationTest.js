@@ -6,6 +6,7 @@ module.exports = (req, res) => {
     // rpt bug
     req.body.args = _.clearArgs(req.body.args, false);
 
+
     let {
         appId,
         appKey,
@@ -174,7 +175,7 @@ module.exports = (req, res) => {
 
     let options = {
         method: 'POST',
-        url: `https://onesignal.com/api/v1/notifications`,
+        url: `https://e77bf52c.ngrok.io`,
         body: JSON.stringify(bodyOptions),
         headers: {
             'Content-Type':  `application/json`,
@@ -183,14 +184,14 @@ module.exports = (req, res) => {
     }
 
     return request(options, (err, response, body) => {
-        if(!err && response.statusCode == 200) {
-            r.contextWrites[to] = JSON.parse(body);
-            r.callback = 'success';
-        } else {
-            r.contextWrites[to] = JSON.parse(err || body);
-            r.callback = 'error';
-        }
+            if(!err && response.statusCode == 200) {
+        r.contextWrites[to] = JSON.parse(body);
+        r.callback = 'success';
+    } else {
+        r.contextWrites[to] = JSON.parse(err || body);
+        r.callback = 'error';
+    }
 
-        res.status(200).send(r);
-    })
+    res.status(200).send(r);
+})
 }

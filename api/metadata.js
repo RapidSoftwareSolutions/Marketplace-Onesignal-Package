@@ -939,6 +939,345 @@ module.exports.do = function(req, res){
                     ]
                 },
                 {
+                    "name":"notificationTest",
+                    "description": "Sends notifications to your users",
+                    "args":[
+                        {
+                            name: "appKey",
+                            type: "credentials",
+                            info: "Required: REST API keys are used for API calls on a specific app's notifications or devices.",
+                            required: true,
+                        },
+                        {
+                            name: "appId",
+                            type: "credentials",
+                            info: "Required: Your OneSignal application ID, which can be found in Keys & IDs. It is a UUID and looks similar to `8250eaf6-1a58-489e-b136-7c74a864b434`.",
+                            required: true,
+                        },
+                        {
+                            name: "appIds",
+                            type: "List",
+                            info: "Optional: Example: [`2dd608f2-a6a1-11e3-251d-400c2940e62b`, `2dd608f2-a6a1-11e3-251d-500f2950e61c`].",
+                            required: false,
+                            "structure": {
+                                "name": "id",
+                                "type": "String",
+                                "info": "App id"
+                            }
+                        },
+                        {
+                            name: "includedSegments",
+                            type: "List",
+                            info: "Required: Comma-separated list of the segment names you want to target. Users in these segments will receive a notification. This targeting parameter is only compatible with excluded_segments. Example: [`Active Users`, `Inactive Users`]",
+                            required: true,
+                            structure: {
+                                "name": "segment",
+                                "type": "String",
+                                "info": "Example: Active Users"
+                            }
+                        },
+                        {
+                            name: "excludedSegments",
+                            type: "List",
+                            info: "Optional: Comma-separated list of segment that will be excluded when sending. Users in these segments will not receive a notification, even if they were included in included_segments. This targeting parameter is only compatible with included_segments. Example: [`Active Users`, `Inactive Users`]",
+                            required: false,
+                            "structure": {
+                                "name": "segment",
+                                "type": "String",
+                                "info": "Example: Active Users"
+                            }
+                        },
+
+                        {
+                            name: "includePlayerIds",
+                            type: "List",
+                            info: "Optional: Comma-separated list of pecific players to send your notification to. Does not require API Auth Key. combine with other targeting parameters. Not compatible with any other targeting parameters. Example: [`1dd608f2-c6a1-11e3-851d-000c2940e62c`, `1dd608f2-c6a1-11e3-851d-000c2940e62c`]",
+                            required: false,
+                            "structure": {
+                                "name": "PlayerId",
+                                "type": "String",
+                                "info": "Player Id"
+                            }
+                        },
+                        {
+                            name: "contents",
+                            type: "JSON",
+                            info: 'REQUIRED: unless content_available=true or template_id is set. The notification`s content (excluding the title), a map of language codes to text for each language. Each hash must have a language code string for a key, mapped to the localized text you would like users to receive for that language. English must be included in the hash.Example: `{"en": "English Message", "es": "Spanish Message"}`',
+                            required: true,
+                        },
+                        {
+                            name: "headings",
+                            type: "JSON",
+                            info: 'Optional: The notification`s title, a map of language codes to text for each language. Each hash must have a language code string for a key, mapped to the localized text you would like users to receive for that language. A default title may be displayed if a title is not provided. Example: `{"en": "English Title", "es": "Spanish Title"}`',
+                            required: false,
+                        },
+                        {
+                            name: "templateId",
+                            type: "String",
+                            info: "Optional: Use a template you setup on our dashboard. You can override the template values by sending other parameters with the request. The template_id is the UUID found in the URL when viewing a template on our dashboard.",
+                            required: false,
+                        },
+                        {
+                            name: "contentAvailable",
+                            type: "String", //Boolean
+                            info: "Optional: Sends content-available=1 to wake your app to run custom native code.",
+                            required: false,
+                        },
+                        {
+                            name: "filters",
+                            type: "String",
+                            info: "Optional: The filters parameter targets notification recipients using an array of JSON objects containing field conditions to check.",
+                            required: false
+                        },
+                        {
+                            name: "mutableContent",
+                            type: "String", //Boolean
+                            info: "Optional: Allows you to change the notification content in your app before it is displayed. ",
+                            required: false,
+                        },
+                        {
+                            name: "data",
+                            type: "JSON",
+                            info: 'Optional: A custom map of data that is passed back to your app. Example: `{"abc": "123", "foo": "bar"}`',
+                            required: false,
+                        },
+                        {
+                            name: "url",
+                            type: "String",
+                            info: "Optional: The URL to open in the browser when a user clicks on the notification. Example: `http://www.google.com`",
+                            required: false,
+                        },
+                        {
+                            name: "bigPicture",
+                            type: "String",
+                            info: "Optional: Picture to display in the expanded view. Can be a drawable resource name or a URL.",
+                            required: false,
+                        },
+                        {
+                            name: "admBigPicture",
+                            type: "String",
+                            info: "Optional: Picture to display in the expanded view. Can be a drawable resource name or a URL.",
+                            required: false,
+                        },
+                        {
+                            name: "chromeBigPicture",
+                            type: "String",
+                            info: "Optional: Large picture to display below the notification text. Must be a local URL.",
+                            required: false,
+                        },
+                        {
+                            name: "buttons",
+                            type: "JSON",
+                            info: 'Optional: Buttons to add to the notification. Icon only works for Android. Example: `[{"id": "id1", "text": "button1", "icon": "ic_menu_share"}, {"id": "id2", "text": "button2", "icon": "ic_menu_send"}]`',
+                            required: false,
+                        },
+                        {
+                            name: "webButtons",
+                            type: "JSON",
+                            info: 'Optional: Add action buttons to the notification. The id field is required. `[{"id": "like-button", "text": "Like", "icon": "http://i.imgur.com/N8SN8ZS.png", "url": "https://yoursite.com"}, {"id": "read-more-button", "text": "Read more", "icon": "http://i.imgur.com/MIxJp1L.png", "url": "https://yoursite.com"}]`',
+                            required: false,
+                        },
+                        {
+                            name: "iosCategory",
+                            type: "String",
+                            info: "Optional: Category APS payload, use with registerUserNotificationSettings:categories in your Objective-C / Swift code. Example: `calendar` category which contains actions like `accept` and `decline`",
+                            required: false,
+                        },
+                        {
+                            name: "androidBackgroundLayout",
+                            type: "JSON",
+                            info: 'Optional: Allowing setting a background image for the notification. This is a JSON object containing the following keys. `image` - Asset file, android resource name, or URL to remote image. recommend size: 1582x256; `headings_color` - Title text color ARGB Hex format. Example(Blue): "FF0000FF". `contents_color` - Body text color ARGB Hex format. Example(Red): "FFFF0000". Example: `{"image": "https://domain.com/background_image.jpg", "headings_color": "FFFF0000", "contents_color": "FF00FF00"}`',
+                            required: false,
+                        },
+                        {
+                            name: "smallIcon",
+                            type: "String",
+                            info: "Optional: If blank the app icon is used. Must be the drawable resource name.",
+                            required: false,
+                        },
+                        {
+                            name: "largeIcon",
+                            type: "String",
+                            info: "Optional: If blank the small_icon is used. Can be a drawable resource name or a URL.",
+                            required: false,
+                        },
+                        {
+                            name: "chromeWebIcon",
+                            type: "String",
+                            info: "Optional: Sets the web push notification's icon. An image URL linking to a valid image. Common image types are supported; GIF will not animate. We recommend 256x256 (at least 80x80) to display well on high DPI devices",
+                            required: false,
+                        },
+                        {
+                            name: "admSmallIcon",
+                            type: "String",
+                            info: "Optional: Specific Amazon icon to use. If blank the app icon is used. Must be the drawable resource name.",
+                            required: false,
+                        },
+                        {
+                            name: "admLargeIcon",
+                            type: "String",
+                            info: "Optional: Specific Amazon icon to use. If blank the app icon is used. Must be the drawable resource name.",
+                            required: false,
+                        },
+                        {
+                            name: "chromeIcon",
+                            type: "String",
+                            info: "Optional: For web push, please see chromeWebIcon instead.",
+                            required: false,
+                        },
+                        {
+                            name: "iosSound",
+                            type: "String",
+                            info: "Optional: Sound file that is included in your app to play instead of the default device notification sound. Pass 'nil' to disable vibration and sound for the notification.",
+                            required: false,
+                        },
+                        {
+                            name: "androidSound",
+                            type: "String",
+                            info: "Optional: Sound file that is included in your app to play instead of the default device notification sound. NOTE: Leave off file extension for Android.",
+                            required: false,
+                        },
+                        {
+                            name: "admSound",
+                            type: "String",
+                            info: "Optional: Sound file that is included in your app to play instead of the default device notification sound. NOTE: Leave off file extension for Android.",
+                            required: false,
+                        },
+                        {
+                            name: "wpSound",
+                            type: "String",
+                            info: "Optional: Sound file that is included in your app to play instead of the default device notification sound.",
+                            required: false,
+                        },
+                        {
+                            name: "wpWnsSound",
+                            type: "String",
+                            info: "Optional: Sound file that is included in your app to play instead of the default device notification sound.",
+                            required: false,
+                        },
+                        {
+                            name: "androidLedColor",
+                            type: "String",
+                            info: "Optional: Sets the devices LED notification light if the device has one. ARGB Hex format.",
+                            required: false,
+                        },
+                        {
+                            name: "androidAccentColor",
+                            type: "String",
+                            info: "Optional: Sets the background color of the notification circle to the left of the notification text. Only applies to apps targeting Android API level 21+ on Android 5.0+ devices.",
+                            required: false,
+                        },
+                        {
+                            name: "androidVisibility",
+                            type: "Select",
+                            options: ["-1","0","1"],
+                            info: 'Optional: `1` = Public (default) (Shows the full message on the lock screen unless the user has disabled all notifications from showing on the lock screen. Please consider the user and mark private if the contents are.) `0` = Private (Hides message contents on lock screen if the user set "Hide sensitive notification content" in the system settings) `-1` = Secret (Notification does not show on the lock screen at all)',
+                            required: false,
+                        },
+                        {
+                            name: "iosBadgeType",
+                            type: "String",
+                            info: "Optional: Describes whether to set or increase/decrease your app's iOS badge count by the `ios_badgeCount` specified count. Can specify `None`, `SetTo`, or `Increase`. `None` leaves the count unaffected.`SetTo` directly sets the badge count to the number specified in ios_badgeCount. `Increase` adds the number specified in ios_badgeCount to the total. Use a negative number to decrease the badge count.",
+                            required: false,
+                        },
+                        {
+                            name: "iosBadgeCount",
+                            type: "String",
+                            info: "Optional: Used with `ios_badgeType`, describes the value to set or amount to increase/decrease your app's iOS badge count by. You can use a negative number to decrease the badge count when used with an `ios_badgeType` of `Increase`.",
+                            required: false,
+                        },
+                        {
+                            name: "sendAfter",
+                            type: "String",
+                            info: "Optional: Schedule notification for future delivery. Examples: All examples are the exact same date & time. `Thu Sep 24 2015 14:00:00 GMT-0700 (PDT)`; `September 24th 2015, 2:00:00 pm UTC-07:00`; `2015-09-24 14:00:00 GMT-0700`; `Sept 24 2015 14:00:00 GMT-0700`; `Thu Sep 24 2015 14:00:00 GMT-0700 (Pacific Daylight Time)`",
+                            required: false,
+                        },
+                        {
+                            name: "delayedOption",
+                            type: "String",
+                            info: "Optional: Possible values are: `timezone` (Deliver at a specific time-of-day in each users own timezone); `last-active` (Deliver at the same time of day as each user last used your app). If `send_after` is used, this takes effect after the send_after time has elapsed.",
+                            required: false,
+                        },
+                        {
+                            name: "ttl",
+                            type: "String",
+                            info: "Optional: Time To Live - In seconds. The notification will be expired if the device does not come back online within this time. The default is 259,200 seconds (3 days).",
+                            required: false,
+                        },
+                        {
+                            name: "isIos",
+                            type: "String", //Boolean
+                            info: "Optional: Indicates whether to send to all devices registered under your app's Apple iOS platform.",
+                            required: false,
+                        },
+                        {
+                            name: "isAndroid",
+                            type: "String", //Boolean
+                            info: "Optional: Indicats whether to send to all devices registered under your app's Google Android platform.",
+                            required: false,
+                        },
+                        {
+                            name: "isAnyWeb",
+                            type: "Select", //Boolean
+                            options: ["isChromeWeb","isFirefox","isSafari"],
+                            info: "Optional: Indicates whether to send to all subscribed web browser users, including Chrome, Firefox, and Safari. You may use this instead as a combined flag instead of separately enabling `isChromeWeb`, `isFirefox`, and `isSafari`, though the three options are equivalent to this one.",
+                            required: false,
+                        },
+                        {
+                            name: "isChromeWeb",
+                            type: "String", //Boolean
+                            info: "Optional: Indicates whether to send to all Google Chrome, Chrome on Android, and Mozilla Firefox users registered under your Chrome & Firefox web push platform.",
+                            required: false,
+                        },
+                        {
+                            name: "isFirefox",
+                            type: "String", //Boolean
+                            info: "Optional: Indicates whether to send to all Mozilla Firefox desktop users registered under your Firefox web push platform.",
+                            required: false,
+                        },
+                        {
+                            name: "isSafari",
+                            type: "String", //Boolean
+                            info: "Optional: Indicates whether to send to all Apple's Safari desktop users registered under your Safari web push platform.isWP",
+                            required: false,
+                        },
+                        {
+                            name: "isWP",
+                            type: "String", //Boolean
+                            info: "Optional: Indicates whether to send to all devices registered under your app's Windows Phone 8.0 platform.",
+                            required: false,
+                        },
+                        {
+                            name: "isWP_WNS",
+                            type: "String", //Boolean
+                            info: "Optional: Indicates whether to send to all devices registered under your app's Windows Phone 8.1+ platform.",
+                            required: false,
+                        },
+                        {
+                            name: "isAdm",
+                            type: "String", //Boolean
+                            info: "Optional: Indicates whether to send to all devices registered under your app's Amazon Fire platform.",
+                            required: false,
+                        },
+                        {
+                            name: "isChrome",
+                            type: "String", //Boolean
+                            info: "Optional: Please see `isChromeWeb` for sending to web push users. This flag only applies to Google Chrome Apps & Extensions.",
+                            required: false,
+                        },
+                    ],
+                    'callbacks':[
+                        {
+                            'name':'error',
+                            'info': 'Error'
+                        },
+                        {
+                            'name':'success',
+                            'info': 'Success'
+                        }
+                    ]
+                },
+                {
                     "name":"cancelNotification",
                     "description": "Stop a scheduled or currently outgoing notification",
                     "args":[
