@@ -119,24 +119,8 @@ module.exports = (req, res) => {
 
     bodyOptions = _.clearArgs(bodyOptions, true);
 
-    let options = {
-        method: 'POST',
-        url: `https://e77bf52c.ngrok.io`,
-        body: JSON.stringify(bodyOptions),
-        headers: {
-            'Content-Type':  `application/json`
-        }
-    }
-
-    return request(options, (err, response, body) => {
-            if(!err && response.statusCode == 200) {
-        r.contextWrites[to] = JSON.parse(body);
-        r.callback = 'success';
-    } else {
-        r.contextWrites[to] = JSON.parse(err || body);
-        r.callback = 'error';
-    }
-
+    r.contextWrites[to] = bodyOptions;
+    r.callback = 'success';
     res.status(200).send(r);
-})
+
 }
