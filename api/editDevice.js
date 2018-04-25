@@ -34,7 +34,14 @@ module.exports = (req, res) => {
     let r  = {
         callback     : "",
         contextWrites: {}
-    };
+		};
+		
+		let rawArgs = req.body.args.tags;
+
+		if(typeof(rawArgs) ==='string')
+		{
+			rawArgs = JSON.parse(rawArgs);
+		}
 
     if(!deviceId || !appId) {
         _.echoBadEnd(r, to, res, 'deviceId, appId');
@@ -57,7 +64,7 @@ module.exports = (req, res) => {
         ad_id: adId,
         sdk: sdk,
         session_count: sessionCount,
-        tags: tags,
+				tags: {"tags":rawArgs},
         amount_spent: amountSpent, 
         created_at: createdAt,
         playtime: playtime,

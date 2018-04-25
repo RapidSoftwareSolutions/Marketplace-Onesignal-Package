@@ -34,8 +34,15 @@ module.exports = (req, res) => {
     let r  = {
         callback     : "",
         contextWrites: {}
-    };
+		};
+		
+		let rawArgs = req.body.args.tags;
 
+		if(typeof(rawArgs) ==='string')
+		{
+			rawArgs = JSON.parse(rawArgs);
+		}
+	
     if(!appId || !deviceType) {
         _.echoBadEnd(r, to, res, 'appId, deviceType');
         return;
@@ -58,7 +65,7 @@ module.exports = (req, res) => {
         ad_id: adId,
         sdk: sdk,
         session_count: sessionCount,
-        tags: tags,
+        tags: {"tags":rawArgs},
         amount_spent: amountSpent, 
         created_at: createdAt,
         playtime: playtime,
@@ -68,8 +75,8 @@ module.exports = (req, res) => {
         lat: parseFloat(lat),
         long: parseFloat(long),
         notification_types: notificationTypes
-    };
-
+		};
+		
     bodyOptions = _.clearArgs(bodyOptions, true);
 
     let options = {
@@ -79,7 +86,8 @@ module.exports = (req, res) => {
         headers: {
             'Content-Type': `application/json`
         }
-    }
+		}
+		
 
     return request(options, (err, response, body) => {
         if(!err && response.statusCode == 200) {

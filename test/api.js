@@ -3,6 +3,7 @@ const assert  = require('chai').assert;
 const request = require('supertest-as-promised');
 
 const appKey = 'NTQxM2UzYjgtZDE0Zi00ODk1LTllMGYtMjM2OGZhMWRmNDQ2',
+		userAuthKey = 'OGVkYjNjNTEtOGIwNy00ZjU5LTk3MDctZDM4MTJkNWQ1MGVj',
     appId = '4ad249c4-1dba-4ac9-97a8-15f3efd2845b',
     deviceId = '7d14056c-4422-4a28-9082-fd713c418d7f',
     deviceType = 4,
@@ -25,27 +26,101 @@ describe('OneSignal package', () => {
     it('/getDevices', () => {
         return request(app)
         .post(`/api/${global.PACKAGE_NAME}/getDevices`)
-        .send({args:{appKey, appId}})
+        .send({args:{appKey, appId, limit, offset}})
         .expect(200)
         .then((res) => {
             assert.equal(res.body.callback, 'success');
         });
     });
 
-    it('/getDevice', () => {
-        return request(app)
-        .post(`/api/${global.PACKAGE_NAME}/getDevice`)
-        .send({args:{appKey, appId, deviceId}})
-        .expect(200)
-        .then((res) => {
-            assert.equal(res.body.callback, 'success');
-        });
-    });
+		it('/getApps', () => {
+			return request(app)
+			.post(`/api/${global.PACKAGE_NAME}/getApps`)
+			.send({args:{userAuthKey}})
+			.expect(200)
+			.then((res) => {
+					assert.equal(res.body.callback, 'success');
+			});
+		});
+		
+		it('/getApps', () => {
+			return request(app)
+			.post(`/api/${global.PACKAGE_NAME}/getApps`)
+			.send({args:{userAuthKey}})
+			.expect(200)
+			.then((res) => {
+					assert.equal(res.body.callback, 'success');
+			});
+		});
+
+		it('/getApp', () => {
+			return request(app)
+			.post(`/api/${global.PACKAGE_NAME}/getApp`)
+			.send({args:{userAuthKey}})
+			.expect(200)
+			.then((res) => {
+					assert.equal(res.body.callback, 'success');
+			});
+		});
+
+		it('/createApp', () => {
+			return request(app)
+			.post(`/api/${global.PACKAGE_NAME}/createApp`)
+			.send({args:{
+				userAuthKey,
+        name,
+				apnsEnv, 
+				apnsP12,
+				apnsP12password,
+				gcmKey,
+				androidGcmSenderId,
+				chromeWebOrigin,
+				chromeWebDefaultNotificationIcon,
+				chromeWebSubDomain,
+				safariApnsP12,
+				safariApnsP12Password,
+				siteName,
+				safariSiteOrigin,
+				safariIcon,
+				chromeKey,}})
+			.expect(200)
+			.then((res) => {
+					assert.equal(res.body.callback, 'success');
+			});
+		});
+
+		it('/updateApp', () => {
+			return request(app)
+			.post(`/api/${global.PACKAGE_NAME}/updateApp`)
+			.send({args:{
+				userAuthKey,
+				appId,
+        name,
+				apnsEnv, 
+				apnsP12,
+				apnsP12password,
+				gcmKey,
+				androidGcmSenderId,
+				chromeWebOrigin,
+				chromeWebDefaultNotificationIcon,
+				chromeWebSubDomain,
+				safariApnsP12,
+				safariApnsP12Password,
+				siteName,
+				safariSiteOrigin,
+				safariIcon,
+				chromeKey,}})
+			.expect(200)
+			.then((res) => {
+					assert.equal(res.body.callback, 'success');
+			});
+		});
+
 
     it('/addDevice', () => {
         return request(app)
         .post(`/api/${global.PACKAGE_NAME}/addDevice`)
-        .send({args:{appKey, appId, deviceType, identifier, language, deviceModel}})
+        .send({args:{appKey, appId, deviceType, identifier, language, deviceModel, tags}})
         .expect(200)
         .then((res) => {
             assert.equal(res.body.callback, 'success');
@@ -55,7 +130,7 @@ describe('OneSignal package', () => {
     it('/editDevice', () => {
         return request(app)
         .post(`/api/${global.PACKAGE_NAME}/editDevice`)
-        .send({args:{appKey, appId, deviceId, identifier, language: language2}})
+        .send({args:{appKey, appId, deviceId, identifier, language: language2, tags}})
         .expect(200)
         .then((res) => {
             assert.equal(res.body.callback, 'success');
@@ -108,7 +183,7 @@ describe('OneSignal package', () => {
     it('/getNotifications', () => {
         return request(app)
         .post(`/api/${global.PACKAGE_NAME}/getNotifications`)
-        .send({args:{appId, appKey}})
+        .send({args:{appId, appKey, limit, offset}})
         .expect(200)
         .then((res) => {
             assert.equal(res.body.callback, 'success');

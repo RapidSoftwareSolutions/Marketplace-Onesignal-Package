@@ -29,7 +29,19 @@ module.exports.do = function(req, res){
                             type: "credentials",
                             info: "Required: Your app id for this device.",
                             required: true,
-                        },
+												},
+												{
+														name: "limit",
+														type: "String",
+														info: "How many devices to return. Max is 300. Default is 300",
+														required: false,
+												},
+												{
+														name: "offset",
+														type: "String",
+														info: "Result offset. Default is 0. Results are sorted by id;",
+														required: false,
+												},
                     ],
                     'callbacks':[
                         {
@@ -41,7 +53,301 @@ module.exports.do = function(req, res){
                             'info': 'Success'
                         }
                     ]
-                },
+								},
+								{
+										"name":"getApps",
+										"description": "View the details of a single OneSignal app",
+										"args":[
+												{
+														name: "userAuthKey",
+														type: "credentials",
+														info: "Required: REST API keys are used for API calls on a specific app's notifications or devices.",
+														required: true,
+												},
+										],
+										'callbacks':[
+												{
+														'name':'error',
+														'info': 'Error'
+												},
+												{
+														'name':'success',
+														'info': 'Success'
+												}
+										]
+								},
+								{
+										"name":"getApp",
+										"description": "View the details of all of your current OneSignal apps",
+										"args":[
+												{
+														name: "userAuthKey",
+														type: "credentials",
+														info: "Required: REST API keys are used for API calls on a specific app's notifications or devices.",
+														required: true,
+												},
+												{
+														name: "appId",
+														type: "credentials",
+														info: "Required: An app id",
+														required: true,
+												},
+										],
+										'callbacks':[
+												{
+														'name':'error',
+														'info': 'Error'
+												},
+												{
+														'name':'success',
+														'info': 'Success'
+												}
+										]
+								},
+								{
+										"name":"createApp",
+										"description": "Creates a new OneSignal app",
+										"args":[
+												{
+														name: "userAuthKey",
+														type: "credentials",
+														info: "Required: REST API keys are used for API calls on a specific app's notifications or devices.",
+														required: true,
+												},
+												{
+														name: "name",
+														type: "String",
+														info: "Required: The name of your new app, as displayed on your apps list on the dashboard. This can be renamed later.",
+														required: true,
+												},
+												{
+														name: "apnsEnv",
+														type: "Select",
+														options: ["sandbox", "production"],
+														info: "Optional: iOS - Either sandbox or production",
+														required: false,
+												},
+												{
+														name: "aapnsP12",
+														type: "String",
+														info: "Optional: iOS - Your apple push notification p12 certificate file, converted to a string and Base64 encoded.",
+														required: false,
+												},
+												{
+														name: "apnsP12password",
+														type: "String",
+														info: "Optional: iOS - Password for the apns_p12 file",
+														required: false,
+												},
+												{
+														name: "gcmKey",
+														type: "String",
+														info: "Optional: ANDROID - Your Google Push Messaging Auth Key",
+														required: false,
+												},
+												{
+														name: "gcmKey",
+														type: "String",
+														info: "Optional: ANDROID - Your Google Push Messaging Auth Key",
+														required: false,
+												},
+												{
+														name: "androidGcmSenderId",
+														type: "String",
+														info: "Optional: ANDROID - Your Google Project number. Also know as Sender ID.",
+														required: false,
+												},
+												{
+														name: "chromeWebOrigin",
+														type: "String",
+														info: "Optional: CHROME, FIREFOX - The URL to your website. This field is required if you wish to enable web push and specify other web push parameters.",
+														required: false,
+												},
+												{
+														name: "chromeWebDefaultNotificationIcon",
+														type: "String",
+														info: "Optional: CHROME - Your default notification icon. Should be 80x80 pixels.",
+														required: false,
+												},
+												{
+														name: "chromeWebSubDomain",
+														type: "String",
+														info: "Optional: CHROME - A subdomain of your choice in order to support Chrome Web Push on non-HTTPS websites. This field must be set in order for the chrome_web_gcm_sender_id property to be processed.",
+														required: false,
+												},
+												{
+														name: "safariApnsP12",
+														type: "String",
+														info: "Optional: SAFARI - Your apple push notification p12 certificate file for Safari Push Notifications, converted to a string and Base64 encoded.",
+														required: false,
+												},
+												{
+														name: "safariApnsP12Password",
+														type: "String",
+														info: "Optional: SAFARI - Password for safari_apns_p12 file",
+														required: false,
+												},
+												{
+														name: "siteName",
+														type: "String",
+														info: "Optional: SAFARI - The URL to your website",
+														required: false,
+												},
+												{
+														name: "safariSiteOrigin",
+														type: "String",
+														info: "Optional: SAFARI - The hostname to your website including http(s)://",
+														required: false,
+												},
+												{
+														name: "safariIcon",
+														type: "String",
+														info: "Optional: SAFARI - A url for a 256x256 png notification icon. This is the only Safari icon URL you need to provide.",
+														required: false,
+												},
+												{
+														name: "chromeKey",
+														type: "String",
+														info: "Optional: NOT FOR WEB PUSH Your Google Push Messaging Auth Key if you use Chrome Apps / Extensions.",
+														required: false,
+												},
+										],
+										'callbacks':[
+												{
+														'name':'error',
+														'info': 'Error'
+												},
+												{
+														'name':'success',
+														'info': 'Success'
+												}
+										]
+								},
+								{
+										"name":"updateApp",
+										"description": "Updates the name or configuration settings of an existing OneSignal app",
+										"args":[
+												{
+														name: "userAuthKey",
+														type: "credentials",
+														info: "Required: REST API keys are used for API calls on a specific app's notifications or devices.",
+														required: true,
+												},
+												{
+														name: "appId",
+														type: "credentials",
+														info: "Required: REST API keys are used for API calls on a specific app's notifications or devices.",
+														required: true,
+												},
+												{
+														name: "name",
+														type: "String",
+														info: "Required: The name of your new app, as displayed on your apps list on the dashboard. This can be renamed later.",
+														required: true,
+												},
+												{
+														name: "apnsEnv",
+														type: "Select",
+														options: ["sandbox", "production"],
+														info: "Optional: iOS - Either sandbox or production",
+														required: false,
+												},
+												{
+														name: "aapnsP12",
+														type: "String",
+														info: "Optional: iOS - Your apple push notification p12 certificate file, converted to a string and Base64 encoded.",
+														required: false,
+												},
+												{
+														name: "apnsP12password",
+														type: "String",
+														info: "Optional: iOS - Password for the apns_p12 file",
+														required: false,
+												},
+												{
+														name: "gcmKey",
+														type: "String",
+														info: "Optional: ANDROID - Your Google Push Messaging Auth Key",
+														required: false,
+												},
+												{
+														name: "gcmKey",
+														type: "String",
+														info: "Optional: ANDROID - Your Google Push Messaging Auth Key",
+														required: false,
+												},
+												{
+														name: "androidGcmSenderId",
+														type: "String",
+														info: "Optional: ANDROID - Your Google Project number. Also know as Sender ID.",
+														required: false,
+												},
+												{
+														name: "chromeWebOrigin",
+														type: "String",
+														info: "Optional: CHROME, FIREFOX - The URL to your website. This field is required if you wish to enable web push and specify other web push parameters.",
+														required: false,
+												},
+												{
+														name: "chromeWebDefaultNotificationIcon",
+														type: "String",
+														info: "Optional: CHROME - Your default notification icon. Should be 80x80 pixels.",
+														required: false,
+												},
+												{
+														name: "chromeWebSubDomain",
+														type: "String",
+														info: "Optional: CHROME - A subdomain of your choice in order to support Chrome Web Push on non-HTTPS websites. This field must be set in order for the chrome_web_gcm_sender_id property to be processed.",
+														required: false,
+												},
+												{
+														name: "safariApnsP12",
+														type: "String",
+														info: "Optional: SAFARI - Your apple push notification p12 certificate file for Safari Push Notifications, converted to a string and Base64 encoded.",
+														required: false,
+												},
+												{
+														name: "safariApnsP12Password",
+														type: "String",
+														info: "Optional: SAFARI - Password for safari_apns_p12 file",
+														required: false,
+												},
+												{
+														name: "siteName",
+														type: "String",
+														info: "Optional: SAFARI - The URL to your website",
+														required: false,
+												},
+												{
+														name: "safariSiteOrigin",
+														type: "String",
+														info: "Optional: SAFARI - The hostname to your website including http(s)://",
+														required: false,
+												},
+												{
+														name: "safariIcon",
+														type: "String",
+														info: "Optional: SAFARI - A url for a 256x256 png notification icon. This is the only Safari icon URL you need to provide.",
+														required: false,
+												},
+												{
+														name: "chromeKey",
+														type: "String",
+														info: "Optional: NOT FOR WEB PUSH Your Google Push Messaging Auth Key if you use Chrome Apps / Extensions.",
+														required: false,
+												},
+										],
+										'callbacks':[
+												{
+														'name':'error',
+														'info': 'Error'
+												},
+												{
+														'name':'success',
+														'info': 'Success'
+												}
+										]
+								},
                 {
                     "name":"getDevice",
                     "description": "View the details of an existing device in one of your OneSignal apps",
@@ -149,9 +455,23 @@ module.exports.do = function(req, res){
                         },
                         {
                             name: "tags",
-                            type: "JSON", // Hash
+                            type: "Array", // Hash
                             info: 'Optional: Custom tags for the player. Only support string key value pairs. Does not support arrays or other nested objects. Example: `{"foo":"bar","this":"that"}`.',
-                            required: false,
+														required: false,
+														"structure": [
+															{
+																"name": "key",
+																"type": "String",
+																"info": "Index targeted by the query.",
+																"required": true
+															},
+															{
+																"name": "value",
+																"type": "String",
+																"info": "URL-encoded list of search parameters.",
+																"required": true
+															}
+														]
                         },
                         {
                             name: "amountSpent",
@@ -162,12 +482,12 @@ module.exports.do = function(req, res){
                         {
                             name: "playtime",
                             type: "Number",
-                            info: "Optional: Unixtime when the player joined the game.",
+                            info: "Optional: Seconds player was running your app.",
                             required: false,
                         },
                         {
                             name: "createdAt",
-                            type: "Number",
+                            type: "DatePicker",
                             info: "Optional: Unixtime when the player joined the game.",
                             required: false,
                         },
@@ -179,7 +499,7 @@ module.exports.do = function(req, res){
                         },
                         {
                             name: "lastActive",
-                            type: "Number",
+                            type: "DatePicker",
                             info: "Optional: Unixtime when the player was last active.",
                             required: false,
                         },
@@ -305,7 +625,7 @@ module.exports.do = function(req, res){
                         },
                         {
                             name: "createdAt",
-                            type: "Number",
+                            type: "DatePicker",
                             info: "Optional: Unixtime when the player joined the game.",
                             required: false,
                         },
@@ -317,7 +637,7 @@ module.exports.do = function(req, res){
                         },
                         {
                             name: "lastActive",
-                            type: "Number",
+                            type: "DatePicker",
                             info: "Optional: Unixtime when the player was last active.",
                             required: false,
                         },
@@ -453,7 +773,8 @@ module.exports.do = function(req, res){
                         },
                         {
                             name: "existing",
-                            type: "String",
+														type: "Select",
+                            options: ["true","false"],
                             info: "Pass true on the first run of your app if you're tracking existing non-consumable purchases. This prevents tracking the same purchases more than once if the user re-installs your app.",
                             required: false,
                         }
@@ -518,7 +839,19 @@ module.exports.do = function(req, res){
                             type: "credentials",
                             info: "Required: Your app id for this device.",
                             required: true,
-                        },
+												},
+												{
+														name: "limit",
+														type: "String",
+														info: "How many devices to return. Max is 300. Default is 300",
+														required: false,
+												},
+												{
+														name: "offset",
+														type: "String",
+														info: "Result offset. Default is 0. Results are sorted by id;",
+														required: false,
+												},
                     ],
                     'callbacks':[
                         {
@@ -583,7 +916,8 @@ module.exports.do = function(req, res){
                         },
                         {
                             name: "opened",
-                            type: "String", //Boolean
+                            type: "Select",
+                            options: ["true","false"],
                             info: "Required: Set to `true`.",
                             required: true,
                         }
@@ -664,7 +998,7 @@ module.exports.do = function(req, res){
                             name: "contents",
                             type: "JSON",
                             info: 'REQUIRED: unless content_available=true or template_id is set. The notification`s content (excluding the title), a map of language codes to text for each language. Each hash must have a language code string for a key, mapped to the localized text you would like users to receive for that language. English must be included in the hash.Example: `{"en": "English Message", "es": "Spanish Message"}`',
-                            required: true,
+                            required: false,
                         },
                         {
                             name: "headings",
@@ -843,7 +1177,7 @@ module.exports.do = function(req, res){
                         },
                         {
                             name: "iosBadgeCount",
-                            type: "String",
+                            type: "Number",
                             info: "Optional: Used with `ios_badgeType`, describes the value to set or amount to increase/decrease your app's iOS badge count by. You can use a negative number to decrease the badge count when used with an `ios_badgeType` of `Increase`.",
                             required: false,
                         },
@@ -861,19 +1195,21 @@ module.exports.do = function(req, res){
                         },
                         {
                             name: "ttl",
-                            type: "String",
+                            type: "Number",
                             info: "Optional: Time To Live - In seconds. The notification will be expired if the device does not come back online within this time. The default is 259,200 seconds (3 days).",
                             required: false,
                         },
                         {
                             name: "isIos",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Indicates whether to send to all devices registered under your app's Apple iOS platform.",
                             required: false,
                         },
                         {
                             name: "isAndroid",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Indicats whether to send to all devices registered under your app's Google Android platform.",
                             required: false,
                         },
@@ -886,43 +1222,50 @@ module.exports.do = function(req, res){
                         },
                         {
                             name: "isChromeWeb",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Indicates whether to send to all Google Chrome, Chrome on Android, and Mozilla Firefox users registered under your Chrome & Firefox web push platform.",
                             required: false,
                         },
                         {
                             name: "isFirefox",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Indicates whether to send to all Mozilla Firefox desktop users registered under your Firefox web push platform.",
                             required: false,
                         },
                         {
                             name: "isSafari",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Indicates whether to send to all Apple's Safari desktop users registered under your Safari web push platform.isWP",
                             required: false,
                         },
                         {
                             name: "isWP",
-                            type: "String", //Boolean
+                            type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Indicates whether to send to all devices registered under your app's Windows Phone 8.0 platform.",
                             required: false,
                         },
                         {
                             name: "isWP_WNS",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Indicates whether to send to all devices registered under your app's Windows Phone 8.1+ platform.",
                             required: false,
                         },
                         {
                             name: "isAdm",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Indicates whether to send to all devices registered under your app's Amazon Fire platform.",
                             required: false,
                         },
                         {
                             name: "isChrome",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Please see `isChromeWeb` for sending to web push users. This flag only applies to Google Chrome Apps & Extensions.",
                             required: false,
                         },
@@ -1019,7 +1362,8 @@ module.exports.do = function(req, res){
                         },
                         {
                             name: "contentAvailable",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Sends content-available=1 to wake your app to run custom native code.",
                             required: false,
                         },
@@ -1031,7 +1375,8 @@ module.exports.do = function(req, res){
                         },
                         {
                             name: "mutableContent",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Allows you to change the notification content in your app before it is displayed. ",
                             required: false,
                         },
@@ -1182,7 +1527,7 @@ module.exports.do = function(req, res){
                         },
                         {
                             name: "iosBadgeCount",
-                            type: "String",
+                            type: "Number",
                             info: "Optional: Used with `ios_badgeType`, describes the value to set or amount to increase/decrease your app's iOS badge count by. You can use a negative number to decrease the badge count when used with an `ios_badgeType` of `Increase`.",
                             required: false,
                         },
@@ -1200,68 +1545,78 @@ module.exports.do = function(req, res){
                         },
                         {
                             name: "ttl",
-                            type: "String",
+                            type: "Number",
                             info: "Optional: Time To Live - In seconds. The notification will be expired if the device does not come back online within this time. The default is 259,200 seconds (3 days).",
                             required: false,
                         },
                         {
                             name: "isIos",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Indicates whether to send to all devices registered under your app's Apple iOS platform.",
                             required: false,
                         },
                         {
                             name: "isAndroid",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Indicats whether to send to all devices registered under your app's Google Android platform.",
                             required: false,
                         },
                         {
                             name: "isAnyWeb",
-                            type: "Select", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             options: ["isChromeWeb","isFirefox","isSafari"],
                             info: "Optional: Indicates whether to send to all subscribed web browser users, including Chrome, Firefox, and Safari. You may use this instead as a combined flag instead of separately enabling `isChromeWeb`, `isFirefox`, and `isSafari`, though the three options are equivalent to this one.",
                             required: false,
                         },
                         {
                             name: "isChromeWeb",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Indicates whether to send to all Google Chrome, Chrome on Android, and Mozilla Firefox users registered under your Chrome & Firefox web push platform.",
                             required: false,
                         },
                         {
                             name: "isFirefox",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Indicates whether to send to all Mozilla Firefox desktop users registered under your Firefox web push platform.",
                             required: false,
                         },
                         {
                             name: "isSafari",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Indicates whether to send to all Apple's Safari desktop users registered under your Safari web push platform.isWP",
                             required: false,
                         },
                         {
                             name: "isWP",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Indicates whether to send to all devices registered under your app's Windows Phone 8.0 platform.",
                             required: false,
                         },
                         {
                             name: "isWP_WNS",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Indicates whether to send to all devices registered under your app's Windows Phone 8.1+ platform.",
                             required: false,
                         },
                         {
                             name: "isAdm",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Indicates whether to send to all devices registered under your app's Amazon Fire platform.",
                             required: false,
                         },
                         {
                             name: "isChrome",
-                            type: "String", //Boolean
+														type: "Select",
+                            options: ["true","false"],
                             info: "Optional: Please see `isChromeWeb` for sending to web push users. This flag only applies to Google Chrome Apps & Extensions.",
                             required: false,
                         },

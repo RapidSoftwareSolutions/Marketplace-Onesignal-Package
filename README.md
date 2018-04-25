@@ -2,7 +2,7 @@
 
 # OneSignal Package
 Push Notification delivery and automation.
-* Domain: onesignal.com
+* Domain: [onesignal.com](https://onesignal.com/)
 * Credentials: appKey, appId
 
 ## How to get credentials: 
@@ -205,6 +205,7 @@ Sends notifications to your users
 | isWP_WNS               | String     | Optional: Indicates whether to send to all devices registered under your app's Windows Phone 8.1+ platform.
 | isAdm                  | String     | Optional: Indicates whether to send to all devices registered under your app's Amazon Fire platform.
 | isChrome               | String     | Optional: Please see `isChromeWeb` for sending to web push users. This flag only applies to Google Chrome Apps & Extensions.
+| filters                | String     | Optional: The filters parameter targets notification recipients using an array of JSON objects containing field conditions to check.
 
 ## OneSignal.cancelNotification
 Stop a scheduled or currently outgoing notification

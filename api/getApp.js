@@ -5,22 +5,22 @@ module.exports = (req, res) => {
 
     req.body.args = _.clearArgs(req.body.args);
 
-    let { appKey, appId, limit=300, offset=0, to="to" } = req.body.args;
+    let { userAuthKey, appId, to="to" } = req.body.args;
 
     let r  = {
         callback     : "",
         contextWrites: {}
     };
 
-    if(!appKey || !appId) {
-        _.echoBadEnd(r, to, res, 'appKey, appId');
+    if(!userAuthKey || !appId) {
+        _.echoBadEnd(r, to, res, 'userAuthKey, appId');
         return;
     }
 
     let options = {
-        url: `https://onesignal.com/api/v1/players?app_id=${appId}&limit=${limit}&offset=${offset}`,
+        url: `https://onesignal.com/api/v1/apps/${appId}`,
         headers: {
-            'Authorization': `Basic ${appKey}`
+            'Authorization': `Basic ${userAuthKey}`
         }
     };
 
@@ -28,8 +28,7 @@ module.exports = (req, res) => {
         if(!err && response.statusCode == 200) {
             r.contextWrites[to] = JSON.parse(body);
             r.callback = 'success'; 
-				}
-				 else {
+        } else {
             r.contextWrites[to] = JSON.parse(err || body);
             r.callback = 'error';
         }
