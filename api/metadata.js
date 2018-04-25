@@ -56,12 +56,12 @@ module.exports.do = function(req, res){
 								},
 								{
 										"name":"getApps",
-										"description": "View the details of a single OneSignal app",
+										"description": "View the details of all of your current OneSignal apps",
 										"args":[
 												{
 														name: "userAuthKey",
 														type: "credentials",
-														info: "Required: REST API keys are used for API calls on a specific app's notifications or devices.",
+														info: "Required: REST User Auth Key are used for API calls on a specific app's notifications or devices.",
 														required: true,
 												},
 										],
@@ -78,12 +78,12 @@ module.exports.do = function(req, res){
 								},
 								{
 										"name":"getApp",
-										"description": "View the details of all of your current OneSignal apps",
+										"description": "View the details of a single OneSignal app",
 										"args":[
 												{
 														name: "userAuthKey",
 														type: "credentials",
-														info: "Required: REST API keys are used for API calls on a specific app's notifications or devices.",
+														info: "Required: REST API User Auth Key are used for API calls on a specific app's notifications or devices.",
 														required: true,
 												},
 												{
@@ -137,12 +137,6 @@ module.exports.do = function(req, res){
 														name: "apnsP12password",
 														type: "String",
 														info: "Optional: iOS - Password for the apns_p12 file",
-														required: false,
-												},
-												{
-														name: "gcmKey",
-														type: "String",
-														info: "Optional: ANDROID - Your Google Push Messaging Auth Key",
 														required: false,
 												},
 												{
@@ -236,7 +230,7 @@ module.exports.do = function(req, res){
 												{
 														name: "appId",
 														type: "credentials",
-														info: "Required: REST API keys are used for API calls on a specific app's notifications or devices.",
+														info: "Required: App Id",
 														required: true,
 												},
 												{
@@ -262,12 +256,6 @@ module.exports.do = function(req, res){
 														name: "apnsP12password",
 														type: "String",
 														info: "Optional: iOS - Password for the apns_p12 file",
-														required: false,
-												},
-												{
-														name: "gcmKey",
-														type: "String",
-														info: "Optional: ANDROID - Your Google Push Messaging Auth Key",
 														required: false,
 												},
 												{

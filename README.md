@@ -20,6 +20,66 @@ Push Notification delivery and automation.
  |Select|String with predefined values|```sample```
  |Array|Array of objects|```[{"Second name":"123","Age":"12","Photo":"sdf","Draft":"sdfsdf"},{"name":"adi","Second name":"bla","Age":"4","Photo":"asfserwe","Draft":"sdfsdf"}] ```
 
+ ## OneSignal.getApps
+View the details of all of your current OneSignal apps
+
+| Field     | Type       | Description
+|-----------|------------|----------
+|userAuthKey| credentials| REST User Auth Key are used for API calls on a specific app's notifications or devices.
+
+## OneSignal.getApp
+View the details of a single OneSignal app
+
+| Field     | Type       | Description
+|-----------|------------|----------
+|userAuthKey| credentials| Required: Required: REST API User Auth Key are used for API calls on a specific app's notifications or devices.
+| appId     | credentials| Required: An app id
+
+## OneSignal.createApp
+Creates a new OneSignal app
+
+| Field     | Type       | Description
+|-----------|------------|----------
+|userAuthKey| credentials| Required: Required: REST API User Auth Key are used for API calls on a specific app's notifications or devices.
+| name      | String		 | Required: The name of your new app, as displayed on your apps list on the dashboard. This can be renamed later.
+| apnsEnv   | Select     | Optional: iOS - Either sandbox or production
+| aapnsP12  | String     | Optional: iOS - Your apple push notification p12 certificate file, converted to a string and Base64 encoded.
+|apnsP12password|  String| Optional: iOS - Password for the apns_p12 file
+| gcmKey    | String     | Optional: ANDROID - Your Google Push Messaging Auth Key
+|androidGcmSenderId| String|Optional: ANDROID - Your Google Project number. Also know as Sender ID.
+| chromeWebOrigin     | String| Optional: CHROME, FIREFOX - The URL to your website. This field is required if you wish to enable web push and specify other web push parameters.
+| chromeWebDefaultNotificationIcon| String| Optional: CHROME - Your default notification icon. Should be 80x80 pixels.
+| chromeWebSubDomain| String| Optional: CHROME - A subdomain of your choice in order to support Chrome Web Push on non-HTTPS websites. This field must be set in order for the chrome_web_gcm_sender_id property to be processed.
+| safariApnsP12| String| Optional: SAFARI - Your apple push notification p12 certificate file for Safari Push Notifications, converted to a string and Base64 encoded.
+| safariApnsP12Password| String|Optional: SAFARI - Password for safari_apns_p12 file
+| siteName| String|Optional: SAFARI - The URL to your website
+| safariSiteOrigin| String|Optional: SAFARI - The hostname to your website including http(s)://
+| safariIcon| String|Optional: SAFARI - A url for a 256x256 png notification icon. This is the only Safari icon URL you need to provide.
+| chromeKey| String|Optional: NOT FOR WEB PUSH Your Google Push Messaging Auth Key if you use Chrome Apps / Extensions.
+
+## OneSignal.updateApp
+Creates a new OneSignal app
+
+| Field     | Type       | Description
+|-----------|------------|----------
+|userAuthKey| credentials| Required: Required: REST API User Auth Key are used for API calls on a specific app's notifications or devices.
+| appId      | credentials	| Required: App Id 
+| name      | String		 | Required: The name of your new app, as displayed on your apps list on the dashboard. This can be renamed later.
+| apnsEnv   | Select     | Optional: iOS - Either sandbox or production
+| aapnsP12  | String     | Optional: iOS - Your apple push notification p12 certificate file, converted to a string and Base64 encoded.
+|apnsP12password|  String| Optional: iOS - Password for the apns_p12 file
+| gcmKey    | String     | Optional: ANDROID - Your Google Push Messaging Auth Key
+|androidGcmSenderId| String|Optional: ANDROID - Your Google Project number. Also know as Sender ID.
+| chromeWebOrigin     | String| Optional: CHROME, FIREFOX - The URL to your website. This field is required if you wish to enable web push and specify other web push parameters.
+| chromeWebDefaultNotificationIcon| String| Optional: CHROME - Your default notification icon. Should be 80x80 pixels.
+| chromeWebSubDomain| String| Optional: CHROME - A subdomain of your choice in order to support Chrome Web Push on non-HTTPS websites. This field must be set in order for the chrome_web_gcm_sender_id property to be processed.
+| safariApnsP12| String| Optional: SAFARI - Your apple push notification p12 certificate file for Safari Push Notifications, converted to a string and Base64 encoded.
+| safariApnsP12Password| String|Optional: SAFARI - Password for safari_apns_p12 file
+| siteName| String|Optional: SAFARI - The URL to your website
+| safariSiteOrigin| String|Optional: SAFARI - The hostname to your website including http(s)://
+| safariIcon| String|Optional: SAFARI - A url for a 256x256 png notification icon. This is the only Safari icon URL you need to provide.
+| chromeKey| String|Optional: NOT FOR WEB PUSH Your Google Push Messaging Auth Key if you use Chrome Apps / Extensions.
+
 ## OneSignal.getDevices
 View the details of multiple devices in one of your OneSignal apps
 
