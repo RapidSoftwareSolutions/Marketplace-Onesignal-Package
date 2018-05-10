@@ -27,12 +27,12 @@ module.exports.do = function(req, res) {
 		 required: true,
 		}, {
 		 name: "limit",
-		 type: "String",
+		 type: "Number",
 		 info: "How many devices to return. Max is 300. Default is 300",
 		 required: false,
 		}, {
 		 name: "offset",
-		 type: "String",
+		 type: "Number",
 		 info: "Result offset. Default is 0. Results are sorted by id;",
 		 required: false,
 		}, ],
@@ -667,12 +667,12 @@ module.exports.do = function(req, res) {
 		 required: true,
 		}, {
 		 name: "limit",
-		 type: "String",
+		 type: "Number",
 		 info: "How many devices to return. Max is 300. Default is 300",
 		 required: false,
 		}, {
 		 name: "offset",
-		 type: "String",
+		 type: "Number",
 		 info: "Result offset. Default is 0. Results are sorted by id;",
 		 required: false,
 		}, ],
@@ -724,8 +724,8 @@ module.exports.do = function(req, res) {
 		 required: true,
 		}, {
 		 name: "opened",
-		 type: "Select",
-		 options: ["true", "false"],
+     type: "Select",
+     options: ["true", "false"],
 		 info: "Required: Set to `true`.",
 		 required: true,
 		}],
@@ -808,7 +808,8 @@ module.exports.do = function(req, res) {
 			required: false,
 		 }, {
 			name: "contentAvailable",
-			type: "String", //Boolean
+			type: "Select",
+      options: ["true", "false"],
 			info: "Optional: Sends content-available=1 to wake your app to run custom native code.",
 			required: false,
 		 }, {
@@ -818,7 +819,8 @@ module.exports.do = function(req, res) {
 			required: false
 		 }, {
 			name: "mutableContent",
-			type: "String", //Boolean
+			type: "Select",
+      options: ["true", "false"],
 			info: "Optional: Allows you to change the notification content in your app before it is displayed. ",
 			required: false,
 		 }, {

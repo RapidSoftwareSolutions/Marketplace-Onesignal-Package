@@ -7,7 +7,7 @@ module.exports = (req, res) => {
     req.body.args = _.clearArgs(req.body.args, false);
 
     let { 
-				userAuthKey,
+        userAuthKey,
 				appId,
         name,
 				apnsEnv, 
@@ -73,8 +73,14 @@ module.exports = (req, res) => {
             r.contextWrites[to] = JSON.parse(body);
             r.callback = 'success';
         } else {
+          try{
             r.contextWrites[to] = JSON.parse(err || body);
             r.callback = 'error';
+          }
+          catch(body){
+            r.contextWrites[to] = 'Not found'
+            r.callback = 'error';
+          }
         }
 
         res.status(200).send(r);

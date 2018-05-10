@@ -5,7 +5,7 @@ module.exports = (req, res) => {
 
     req.body.args = _.clearArgs(req.body.args);
 
-    let { appKey, appId, limit, offset, to="to" } = req.body.args;
+    let { appKey, appId,  limit=300, offset=0, to="to"  } = req.body.args;
 
     let r  = {
         callback     : "",
@@ -18,7 +18,7 @@ module.exports = (req, res) => {
     }
 
     let options = {
-        url: `https://onesignal.com/api/v1/notifications?app_id=${appId}`,
+        url: `https://onesignal.com/api/v1/notifications?app_id=${appId}&limit=${limit}&offset=${offset}`,
         headers: {
             'Authorization': `Basic ${appKey}`
         }

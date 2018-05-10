@@ -87,7 +87,8 @@ View the details of multiple devices in one of your OneSignal apps
 |-----------|------------|----------
 | appKey    | credentials| Required: REST API keys are used for API calls on a specific app's notifications or devices.
 | appId     | credentials| Required: Your app id for this device.
-
+| limit     | Number     | How many devices to return. Max is 300. Default is 300
+| offset    | Number     | Result offset. Default is 0. Results are sorted by id
 ## OneSignal.getDevice
 View the details of an existing device in one of your OneSignal apps
 
@@ -115,7 +116,7 @@ Register a new device to one of your OneSignal apps
 | sessionCount     | Number     | Optional: Number of times the user has played the game, defaults to 1.
 | tags             | JSON       | Optional: Custom tags for the player. Only support string key value pairs. Does not support arrays or other nested objects. Example: `{"foo":"bar","this":"that"}`.
 | amountSpent      | String     | Optional: Amount the user has spent in USD, up to two decimal places.
-| playtime         | Number     | Optional: Unixtime when the player joined the game.
+| playtime         | Number     | Optional: Seconds player was running your app.
 | createdAt        | Number     | Optional: Unixtime when the player joined the game.
 | badgeCount       | Number     | Optional: Current iOS badge count displayed on the app icon.
 | lastActive       | Number     | Optional: Unixtime when the player was last active.
@@ -142,7 +143,7 @@ Update an existing device in one of your OneSignal apps
 | sessionCount     | Number     | Optional: Number of times the user has played the game, defaults to 1.
 | tags             | JSON       | Optional: Custom tags for the player. Only support string key value pairs. Does not support arrays or other nested objects. Example: `{"foo":"bar","this":"that"}`.
 | amountSpent      | String     | Optional: Amount the user has spent in USD, up to two decimal places.
-| playtime         | Number     | Optional: Unixtime when the player joined the game.
+| playtime         | Number     | Optional: Seconds player was running your app.
 | createdAt        | Number     | Optional: Unixtime when the player joined the game.
 | badgeCount       | Number     | Optional: Current iOS badge count displayed on the app icon.
 | lastActive       | Number     | Optional: Unixtime when the player was last active.
@@ -174,7 +175,7 @@ Track a new purchase in your app
 | purchaseSku       | String| Required: The unique identifier of the purchased item.
 | purchaseAmount    | String| Required: The amount, in USD, spent purchasing the item.
 | purchaseIso       | Number| Required: The 3-letter ISO 4217 currency code. Required for correct storage and conversion of amount.
-| existing          | String| Pass true on the first run of your app if you're tracking existing non-consumable purchases. This prevents tracking the same purchases more than once if the user re-installs your app.
+| existing          | Select| Pass true on the first run of your app if you're tracking existing non-consumable purchases. This prevents tracking the same purchases more than once if the user re-installs your app.
 
 ## OneSignal.updateDeviceSessionLength
 Update a device's session length upon app resuming
@@ -192,6 +193,8 @@ View the details of multiple notifications
 |-----------|------------|----------
 | appKey    | credentials| Required: REST API keys are used for API calls on a specific app's notifications or devices.
 | appId     | credentials| Required: Your app id for this device.
+| limit     | Number     | How many devices to return. Max is 300. Default is 300
+| offset    | Number     | Result offset. Default is 0. Results are sorted by id
 
 ## OneSignal.getNotification
 View the details of a single notification
@@ -209,7 +212,7 @@ Track when users open a notification
 |-------------------|------------|----------
 | appId             | credentials| Required: OneSignal app id.
 | notificationId    | String     | Required: Notification ID.
-| opened            | String     | Required: Set to `true`.
+| opened            | Select     | Required: Set to `true`.
 
 ## OneSignal.sendNotification
 Sends notifications to your users
@@ -225,8 +228,8 @@ Sends notifications to your users
 | contents               | JSON       | REQUIRED: unless content_available=true or template_id is set. The notification`s content (excluding the title), a map of language codes to text for each language. Each hash must have a language code string for a key, mapped to the localized text you would like users to receive for that language. English must be included in the hash.Example: `{"en": "English Message", "es": "Spanish Message"}`
 | headings               | JSON       | Optional: The notification`s title, a map of language codes to text for each language. Each hash must have a language code string for a key, mapped to the localized text you would like users to receive for that language. A default title may be displayed if a title is not provided. Example: `{"en": "English Title", "es": "Spanish Title"}`
 | templateId             | String     | Optional: Use a template you setup on our dashboard. You can override the template values by sending other parameters with the request. The template_id is the UUID found in the URL when viewing a template on our dashboard.
-| contentAvailable       | String     | Optional: Sends content-available=1 to wake your app to run custom native code.
-| mutableContent         | String     | Optional: Allows you to change the notification content in your app before it is displayed. 
+| contentAvailable       | Select     | Optional: Sends content-available=1 to wake your app to run custom native code.
+| mutableContent         | Select     | Optional: Allows you to change the notification content in your app before it is displayed. 
 | data                   | JSON       | Optional: A custom map of data that is passed back to your app. Example: `{"abc": "123", "foo": "bar"}`
 | url                    | String     | Optional: The URL to open in the browser when a user clicks on the notification. Example: `http://www.google.com`
 | bigPicture             | String     | Optional: Picture to display in the expanded view. Can be a drawable resource name or a URL.
@@ -262,7 +265,7 @@ Sends notifications to your users
 | isFirefox              | String     | Optional: Indicates whether to send to all Mozilla Firefox desktop users registered under your Firefox web push platform.
 | isSafari               | String     | Optional: Indicates whether to send to all Apple's Safari desktop users registered under your Safari web push platform.isWP
 | isWP                   | String     | Optional: Indicates whether to send to all devices registered under your app's Windows Phone 8.0 platform.
-| isWP_WNS               | String     | Optional: Indicates whether to send to all devices registered under your app's Windows Phone 8.1+ platform.
+| isWP_WNS               | Select     | Optional: Indicates whether to send to all devices registered under your app's Windows Phone 8.1+ platform.
 | isAdm                  | String     | Optional: Indicates whether to send to all devices registered under your app's Amazon Fire platform.
 | isChrome               | String     | Optional: Please see `isChromeWeb` for sending to web push users. This flag only applies to Google Chrome Apps & Extensions.
 | filters                | String     | Optional: The filters parameter targets notification recipients using an array of JSON objects containing field conditions to check.
